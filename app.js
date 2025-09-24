@@ -190,7 +190,7 @@ app.get("/project/John-Jacobs", (req, res) => res.render("John-Jacobs"));
 
 app.get("/publications", (req, res) => res.render("Publications"));
 app.get("/publications/industryreports", (req, res) =>
-  res.render("industryreports")
+  res.render("industryReports")
 );
 
 app.get("/team", (req, res) => res.render("Team"));
@@ -314,3 +314,4 @@ const shutdown = async (signal) => {
 
 process.on("SIGINT", () => shutdown("SIGINT"));
 process.on("SIGTERM", () => shutdown("SIGTERM"));
+
