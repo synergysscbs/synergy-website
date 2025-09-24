@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Our Initiatives | SYNERGYSSBS</title>
+    <link rel="icon" href="./images/BUDGET 2022.png" type="image/x-icon">
+    <meta name="description"
+        content="Explore the initiatives of SYNERGYSSBS, including our student-led investment fund and Peer Connect program for CUET, IPMAT, and IPU CET aspirants.">
+    <meta name="author" content="SYNERGYSSBS">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* General Body & Root Styling */
+        :root {
+            --primary-color: #448CCB;
+            --secondary-color: #64B3F4;
+            --text-color: #e3eaf7;
+            --bg-color: #000;
+            --card-bg: rgba(30, 30, 30, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section - Improved Responsiveness */
+        .hero {
+            height: 100vh;
+            min-height: 500px;
+            max-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://example.com/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: min(90vw, 800px);
+            width: 100%;
+            padding: 2rem 1rem;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(91deg, #ffffff 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 20px rgba(68, 140, 203, 0.5);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container - Responsive */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+            width: 100%;
+        }
+
+        /* Floating background glow elements - Scaled for mobile */
+        .glow {
+            position: absolute;
+            width: clamp(200px, 30vw, 400px);
+            height: clamp(200px, 30vw, 400px);
+            background: radial-gradient(circle, rgba(68, 140, 203, 0.15), transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .glow1 {
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .glow2 {
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 2s;
+        }
+
+        .glow3 {
+            top: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 4s;
+        }
+
+        .glow4 {
+            bottom: 50px;
+            left: 10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(20px, 20px);
+            }
+        }
+
+        /* Section Headers & Titles - Responsive */
+        section {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            position: relative;
+        }
+
+        section header {
+            padding: 0 1rem 2rem;
+            text-align: center;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            animation: pulse 3s infinite alternate;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        section header:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 30px rgba(68, 140, 203, 0.8);
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: white;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+
+        /* Investment Fund Layout - Fully Responsive */
+        .funds-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (min-width: 1024px) {
+            .funds-layout {
+                grid-template-columns: 1fr 2fr;
+                gap: 3rem;
+            }
+        }
+
+        .fund-stats-column {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .fund-stats-column {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        /* Fund Stat Cards - Responsive */
+        .fund-stat-card {
+            background: linear-gradient(145deg, rgba(40, 40, 40, 0.8), rgba(20, 20, 20, 0.8));
+            border: 1px solid rgba(68, 140, 203, 0.2);
+            border-radius: 1.5rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            min-height: 120px;
+        }
+
+        .fund-stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(68, 140, 203, 0.4);
+            border-color: rgba(68, 140, 203, 0.6);
+        }
+
+        .fund-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(68, 140, 203, 0.1), rgba(68, 140, 203, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .fund-stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .fund-stat-card .stat-title {
+            text-transform: uppercase;
+            font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+            font-weight: 700;
+            color: #ADD8E6;
+            letter-spacing: 1px;
+            transition: color 0.4s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .fund-stat-card .stat-value {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff, #448CCB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            transition: all 0.4s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .fund-stat-card:hover .stat-value {
+            transform: scale(1.05);
+            text-shadow: 0 0 15px rgba(68, 140, 203, 0.5);
+        }
+
+        /* Fund Content Column */
+        .fund-content-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .fund-content-title {
+            color: white;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Reason Cards - Responsive Grid */
+        .reason-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .reason-cards {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        .reason {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            border: 1px solid rgba(68, 140, 203, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reason::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .reason:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(68, 140, 203, 0.3);
+            border-color: rgba(68, 140, 203, 0.4);
+        }
+
+        .reason:hover::after {
+            transform: scaleX(1);
+        }
+
+        .reason .icon {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            margin-bottom: 0.7rem;
+            display: block;
+            transition: all 0.4s ease;
+            color: var(--secondary-color);
+        }
+
+        .reason:hover .icon {
+            transform: scale(1.2) rotate(4deg);
+            color: #64B3F4;
+        }
+
+        .reason h4 {
+            font-weight: 700;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            font-size: clamp(1rem, 2.2vw, 1.125rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .reason:hover h4 {
+            color: #64B3F4;
+            text-shadow: 0 0 8px rgba(68, 140, 203, 0.3);
+        }
+
+        .reason ul {
+            margin-left: 1.2em;
+            color: #ddddfb;
+            font-size: clamp(0.85rem, 1.8vw, 0.875rem);
+            line-height: 1.5;
+        }
+
+        .reason li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Supported By Section - Responsive */
+        #supported-by {
+            margin-top: 2rem;
+            padding: 1rem;
+        }
+
+        #supported-by .flex {
+            display: flex;
+            align-items: center;
+            gap: clamp(1rem, 3vw, 2rem);
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 640px) {
+            #supported-by .flex {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        #supported-by img {
+            width: clamp(100px, 15vw, 150px);
+            height: auto;
+            object-fit: contain;
+            padding: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        #supported-by img:hover {
+            transform: scale(1.08);
+        }
+
+        /* Charts Images - Responsive Grid */
+        .charts-imgs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .charts-imgs {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        .charts-imgs h3 {
+            grid-column: 1 / -1;
+            color: #87CEFA;
+            font-weight: 700;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .charts-imgs img {
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(68, 140, 203, 0.2);
+            transition: all 0.4s ease;
+            filter: brightness(0.95);
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .charts-imgs img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(68, 140, 203, 0.4);
+            filter: brightness(1.05);
+        }
+
+        /* Peer Connect Section - Responsive */
+        .peerconnect-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .peerconnect-wrap {
+                grid-template-columns: 2fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .peerconnect-content {
+            width: 100%;
+        }
+
+        .peerconnect-content p {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            line-height: 1.7;
+        }
+
+        .peerconnect-image {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .peerconnect-image {
+                max-width: 350px;
+            }
+        }
+
+        .peerconnect-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(68, 140, 203, 0.25);
+            border: 2px solid rgba(68, 140, 203, 0.27);
+            transition: transform 0.4s ease;
+        }
+
+        .peerconnect-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(68, 140, 203, 0.38);
+        }
+
+        /* Highlights Section - Responsive */
+        .highlights {
+            margin: 3rem 0;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            background: linear-gradient(111deg, #1a183b 64%, #1b2275 100%);
+            border-radius: 18px;
+            box-shadow: 0 0 18px rgba(68, 140, 203, 0.22);
+            transition: all 0.4s ease;
+        }
+
+        .highlights:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(68, 140, 203, 0.38);
+        }
+
+        .highlights h2 {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .highlights ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            list-style-type: '⚡️';
+        }
+
+        .highlights li {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            line-height: 1.8;
+            margin-bottom: 0.9rem;
+            padding-left: 0.5rem;
+        }
+
+        .highlights b {
+            color: #64B3F4;
+            font-weight: 700;
+        }
+
+        /* Carousel - Responsive */
+        .carousel {
+            position: relative;
+            max-width: 960px;
+            margin: 3rem auto;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 2px solid rgba(68, 140, 203, 0.27);
+            box-shadow: 0 0 28px rgba(68, 140, 203, 0.25);
+            background: #111;
+            width: calc(100% - 2rem);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex: 0 0 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(68, 140, 203, 0.8);
+            border: none;
+            color: white;
+            width: clamp(35px, 6vw, 45px);
+            height: clamp(35px, 6vw, 45px);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: bold;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(68, 140, 203, 1);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 15px rgba(68, 140, 203, 0.5);
+        }
+
+        .carousel-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.3;
+            transform: translateY(-50%) scale(1);
+        }
+
+        .carousel-button.prev {
+            left: clamp(10px, 2vw, 15px);
+        }
+
+        .carousel-button.next {
+            right: clamp(10px, 2vw, 15px);
+        }
+
+        /* CTA Button - Responsive */
+        .cta-btn {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: clamp(0.75rem, 2vw, 0.9rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(68, 140, 203, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(68, 140, 203, 0.6);
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Button container - Responsive */
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding: 0 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0.25rem 0;
+            }
+        }
+
+        /* Additional responsive utilities */
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 400px;
+                padding-top: 1rem;
+            }
+
+            .hero-content {
+                padding: 1rem 0.5rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .fund-stats-column {
+                gap: 1rem;
+            }
+
+            .fund-stat-card {
+                min-height: 100px;
+                padding: 1.25rem;
+            }
+
+            .reason-cards {
+                gap: 1rem;
+            }
+
+            .reason {
+                padding: 1.25rem;
+            }
+
+            .highlights {
+                padding: 1.25rem;
+                margin: 2rem 0;
+            }
+
+            .carousel {
+                margin: 2rem auto;
+                border-radius: 15px;
+            }
+
+            .peerconnect-wrap {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 320px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            section header {
+                font-size: 1.75rem;
+            }
+
+            .fund-stat-card .stat-value {
+                font-size: 1.75rem;
+            }
+
+            .cta-btn {
+                min-width: 120px;
+                padding: 0.65rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Large screens optimization */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1600px;
+            }
+
+            .hero {
+                max-height: 900px;
+            }
+
+            .funds-layout {
+                gap: 4rem;
+            }
+
+            .fund-stats-column {
+                gap: 2rem;
+            }
+
+            .reason-cards {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <%- include('partials/navbar') %>
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+        <div class="glow glow3"></div>
+        <div class="glow glow4"></div>
+
+        <!-- Hero Section -->
+        <section class="hero" aria-label="Main Hero Section">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Student-Led Financial Initiative</h1>
+                <p>Gaining real-world market experience while building financial mastery</p>
+                <div class="button-container" data-aos="fade-up" data-aos-delay="300">
+                    <a href="#funds" class="cta-btn">Explore Our Funds</a>
+                    <a href="#peer-connect" class="cta-btn">Explore Connections</a>
+                </div>
+            </div>
+        </section>
+
+        <main class="container">
+            <section id="funds" aria-labelledby="funds-title">
+                <header id="funds-title" data-aos="fade-down" data-aos-duration="1000">INVESTMENT FUND</header>
+                <div class="subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h4 class="font-bold">A student-led fund providing real-world market exposure, strategic investing,
+                        and
+                        financial mastery</h4>
+                </div>
+
+                <div class="funds-layout">
+                    <div class="fund-stats-column">
+                        <div class="fund-stat-card" data-aos="zoom-in-up">
+                            <h2 class="stat-title">Diversified Portfolio</h2>
+                            <p class="stat-value"><span id="company-count">0</span></p>
+                            <span class="text-info-300 text-sm mt-1" style="color: #87CEEB;">Companies Across
+                                Sectors</span>
+                        </div>
+                        <div class="fund-stat-card" data-aos="zoom-in-up" data-aos-delay="100">
+                            <h2 class="stat-title">Fund Size</h2>
+                            <p class="stat-value">₹<span id="fund-size">0K+</span></p>
+                            <span class="text-info-300 text-sm mt-1" style="color: #87CEEB;">Total Assets Under
+                                Management</span>
+                        </div>
+                        <div class="fund-stat-card" data-aos="zoom-in-up" data-aos-delay="200">
+                            <h2 class="stat-title">Returns</h2>
+                            <p class="stat-value"><span id="return-open">0%</span></p>
+                            <span class="text-info-300 text-sm mt-1" style="color: #87CEEB;">Opening Year (FY
+                                2023-24)</span>
+                        </div>
+                    </div>
+
+                    <div class="fund-content-column" data-aos="fade-left">
+                        <h2 class="fund-content-title">Why sustain an investment fund?</h2>
+                        <div class="reason-cards">
+                            <div class="reason" data-aos="fade-up" data-aos-delay="100">
+                                <i class="icon fas fa-chart-line" aria-hidden="true" style="color: #64B3F4;"></i>
+                                <h4>Hands-on Market Exposure</h4>
+                                <ul>
+                                    <li>Investing in equities, F&O, and diversified assets</li>
+                                    <li>Balancing risk, returns, and market dynamics</li>
+                                </ul>
+                            </div>
+                            <div class="reason" data-aos="fade-up" data-aos-delay="200">
+                                <i class="icon fas fa-brain" aria-hidden="true" style="color: #64B3F4;"></i>
+                                <h4>Practical Finance Knowledge</h4>
+                                <ul>
+                                    <li>Applying DCF, CAPM, and relative valuation</li>
+                                    <li>Comparing P/E, EV/EBITDA, to benchmark peers</li>
+                                </ul>
+                            </div>
+                            <div class="reason" data-aos="fade-up" data-aos-delay="300">
+                                <i class="icon fas fa-graduation-cap" aria-hidden="true" style="color: #64B3F4;"></i>
+                                <h4>Opportunity for Students</h4>
+                                <ul>
+                                    <li>KSS to master derivatives, F&O, risk assessment, and economic analysis</li>
+                                    <li>Setting a strong foundation for finance</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="supported-by" data-aos="zoom-in">
+                            <strong style="color: #87CEEB;">Supported by:</strong>
+                            <div class="flex">
+                                <img src="/images/initiatives/groww-logo.png" alt="Groww Logo" />
+                                <img src="/images/initiatives/zerodha-logo.png" alt="Zerodha Logo" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="peer-connect" aria-labelledby="peer-connect-title">
+                <header id="peer-connect-title" data-aos="fade-down">Peer Connect</header>
+                <div class="peerconnect-wrap">
+                    <div class="peerconnect-content" data-aos="fade-right">
+                        <p>You're just out of school. Everyone's talking <b>CUET, IPMAT, IPU
+                                CET</b>. You're overwhelmed, unsure, and somehow expected to have it all figured
+                            out.<br /><br /> <b>We've been there. And we built Peer Connect for you.</b><br /><br />Peer
+                            Connect is a carefully designed space where aspirants meet mentors who've walked the same
+                            road.
+                            Expect honest guidance, no-fluff prep strategies, and insights you won't find on coaching
+                            pamphlets.<br /><br /> Because we believe the journey to a top college shouldn't be lonely,
+                            and
+                            success shouldn't come at the cost of sanity.<br /><br /> Here, we don't just prepare you
+                            for
+                            entrances. We help you find your way into the world of possibilities.</p>
+                    </div>
+                    <div class="peerconnect-image" data-aos="fade-left">
+                        <img src="/images/initiatives/peer connect social.jpg" alt="Mentor guiding student group" />
+                    </div>
+                </div>
+
+                <section class="highlights" aria-label="Peer Connect Unique Features" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <h2>What Makes Peer Connect Unique?</h2>
+                    <ul>
+                        <li><b>One-on-One Mentorship:</b> Get matched with real mentors from your dream colleges.</li>
+                        <li><b>Peer-Led Workshops:</b> Go beyond textbooks with interactive prep sessions and group
+                            discussions.</li>
+                        <li><b>Mental Wellness First:</b> Strategies to excel without burning out or losing your spark.
+                        </li>
+                        <li><b>Insider Insights:</b> Learn what actually worked for top performers—straight from them.
+                        </li>
+                        <li><b>Supportive Community:</b> Find friends, collaborators, and encouragement every step of
+                            the
+                            way.</li>
+                    </ul>
+                </section>
+
+                <div class="carousel" aria-label="Peer Connect Workshops Carousel" data-aos="zoom-in-up"
+                    data-aos-delay="200">
+                    <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="/images/initiatives/Image 3.jpg" alt="Workshop Image 1" />
+                        </div>
+                        <div class="carousel-slide"><img src="/images/initiatives/Image 1.jpg" alt="Workshop Image 2" />
+                        </div>
+                        <div class="carousel-slide"><img src="/images/initiatives/Image 2.jpg" alt="Workshop Image 3" />
+                        </div>
+                        <div class="carousel-slide"><img src="/images/initiatives/Picture1.jpg"
+                                alt="Workshop Image 4" /></div>
+                    </div>
+                    <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+
+
+</body>
+<script src="include.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="/javascript/initiative.js"></script>
+
+</html>

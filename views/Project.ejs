@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | SYNERGY SSCBS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ✅ Correct CSS path -->
+    <link rel="stylesheet" href="/css/project.css">
+</head>
+
+<body class="bg-black text-white">
+
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
+
+        <div id="projects-page">
+
+            <!-- Progress Bar -->
+            <div id="progress-bar"
+                class="fixed top-0 left-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 origin-left scale-x-0 z-50">
+            </div>
+
+            <!-- Hero Section -->
+            <section class="parallax-section relative h-screen flex items-center justify-center bg-center bg-cover"
+                style="background-image: url('/images/project/ProjectManagement.jpg');">
+                <div class="absolute inset-0 bg-black/60"></div>
+                <div class="relative z-10 text-center max-w-3xl fade-up">
+                    <h1 class="text-5xl md:text-7xl font-bold">Our Projects</h1>
+                    <p class="mt-4 text-lg md:text-2xl text-white/80">A showcase of creativity, innovation, and impact.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Zypp Electric -->
+            <section class="parallax-section relative h-screen flex items-center bg-center bg-cover"
+                style="background-image: url('/images/project/merged_collage_resized.jpg');">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl px-6 fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold">Zypp Electric</h2>
+                    <h3 class="mt-3 text-2xl md:text-3xl font-bold">Strategy Interns</h3>
+                    <p class="mt-3 text-lg text-white/80">
+                        Zypp Electric electrifies last-mile delivery with a tech-driven EV platform, helping businesses
+                        go green and powering India's sustainable urban mobility revolution.
+                    </p>
+                    <a href="/project/zypp" target="_blank"
+                        class="read-more-btn mt-6 inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 hover:bg-blue-600">
+                        Read More
+                    </a>
+                </div>
+            </section>
+
+            <!-- Sustain Labs Paris -->
+            <section class="parallax-section relative h-screen flex items-center bg-center bg-cover"
+                style="background-image: url('/images/project/SLP.jpg');">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl px-6 fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold">Sustain Labs Paris</h2>
+                    <h3 class="mt-3 text-2xl md:text-3xl font-bold">Student Consultants</h3>
+                    <p class="mt-3 text-lg text-white/80">
+                        Sustain Labs Paris is a venture studio that builds and invests in ventures that accelerate a
+                        sustainable future, from climate education and carbon capture to social impact.
+                    </p>
+                    <a href="/project/slp" target="_blank"
+                        class="read-more-btn mt-6 inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 hover:bg-blue-600">
+                        Read More
+                    </a>
+                </div>
+            </section>
+
+            <!-- John Jacobs -->
+            <section class="parallax-section relative h-screen flex items-center bg-center bg-cover"
+                style="background-image: url('/images/project/JJ.jpg');">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                <div class="relative z-10 max-w-3xl px-6 fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold">John Jacobs</h2>
+                    <h3 class="mt-3 text-2xl md:text-3xl font-bold">Summer Interns</h3>
+                    <p class="mt-3 text-lg text-white/80">
+                        Synergy provided John Jacobs with a multi-pronged strategy to boost its premium eyewear brand by
+                        optimizing product selection, enhancing brand presence, and identifying new growth
+                        opportunities.
+                    </p>
+                    <a href="/project/John-Jacobs" target="_blank"
+                        class="read-more-btn mt-6 inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 hover:bg-blue-600">
+                        Read More
+                    </a>
+                </div>
+            </section>
+
+            <!-- Past Projects -->
+            <section id="past-projects" class="py-20 bg-black text-white">
+                <div class="container mx-auto px-6 max-w-7xl">
+                    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-up">Past Projects</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <div
+                            class="project-card relative w-full h-80 overflow-hidden rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105 group fade-up">
+                            <div class="card-bg absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-110"
+                                style="background-image: url('/images/project/meteor_venture_logo (1).jpeg');">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-black/50 group-hover:bg-black/75 transition-colors duration-300 flex items-end p-6">
+                                <h3 class="text-2xl font-bold">Finance Project</h3>
+                            </div>
+                        </div>
+
+                        <div
+                            class="project-card relative w-full h-80 overflow-hidden rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105 group fade-up">
+                            <div class="card-bg absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-110"
+                                style="background-image: url('/images/project/Magic Billion.png');">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-black/50 group-hover:bg-black/75 transition-colors duration-300 flex items-end p-6">
+                                <h3 class="text-2xl font-bold">Live Project</h3>
+                            </div>
+                        </div>
+
+                        <div
+                            class="project-card relative w-full h-80 overflow-hidden rounded-2xl shadow-xl transform transition-transform duration-300 hover:scale-105 group fade-up">
+                            <div class="card-bg absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-110"
+                                style="background-image: url('/images/project/images.png');">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-black/50 group-hover:bg-black/75 transition-colors duration-300 flex items-end p-6">
+                                <h3 class="text-2xl font-bold">GMT Project</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <%- include('partials/footer') %>
+
+            <!-- Scripts -->
+            <script src="/javascript/project.js"></script>
+            <script src="/javascript/include.js"></script>
+</body>
+
+</html>

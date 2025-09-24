@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBS Case Study Challenge 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --dark-bg: #0a0a0a;
+            --dark-surface: #121212;
+            --dark-card: #1a1a1a;
+            --dark-text: #e0e0e0;
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --light: #1f1f1f;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark-surface), var(--dark-card));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .event-logo {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto 25px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .event-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+        }
+
+        .event-logo i {
+            font-size: 60px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            min-width: 220px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            padding: 120px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .about {
+            padding: 100px 0;
+            background: var(--dark-surface);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%) brightness(85%);
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        .event-gallery {
+            display: flex;
+            gap: 30px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-item {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%) brightness(85%);
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        .rounds {
+            padding: 100px 0;
+            background: var(--dark-bg);
+        }
+
+        .round-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .round {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 40px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary);
+        }
+
+        .round:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .round h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.7rem;
+        }
+
+        .round p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .round-icon {
+            background: var(--primary);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .challenge {
+            padding: 100px 0;
+            background: var(--dark-surface);
+        }
+
+        .challenge-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .challenge-box {
+            background: var(--dark-card);
+            border-left: 6px solid var(--accent);
+            padding: 40px;
+            margin: 40px 0;
+            text-align: left;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .challenge-box ul {
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+
+        .challenge-box li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .challenge-box li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.5rem;
+        }
+
+        .judges {
+            padding: 100px 0;
+            background: var(--dark-bg);
+            text-align: center;
+        }
+
+        .judges p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .highlight-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .highlight h2 {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .highlight p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .partners {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--dark-surface);
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .partner-logo i {
+            font-size: 65px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .partner-logo span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .stat-item {
+                min-width: 160px;
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .event-gallery {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <header>
+            <div class="container header-content">
+                <div class="event-logo">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h1>CBS Case Study Challenge</h1>
+                <p class="subtitle">Under Crescendo's CBS Business Championship 2025</p>
+                <p class="subtitle">Powered by CBS | In Collaboration with Ecovision and Grandeur</p>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">600+</div>
+                        <div class="stat-label">Registrations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">35K+</div>
+                        <div class="stat-label">Attendees</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Finalist Teams</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container hero-content">
+                <h2>Synergy's Flagship Academic Event</h2>
+                <p>The CBS Case Study Challenge brought together participants from across India to solve real-world
+                    business
+                    problems under Crescendo, the annual cultural and management fest.</p>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2 class="section-title">About the Event</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>As Synergy's flagship academic initiative, the CBS Case Study Challenge was organised under
+                            Crescendo, the annual cultural and management fest that draws over 35,000 attendees.</p>
+                        <p>In collaboration with Ecovision and Grandeur, the event brought together participants from
+                            across
+                            India to solve real-world business problems.</p>
+                        <p>The challenge saw 600+ registrations. Ten finalist teams after surviving 2 preliminary
+                            rounds,
+                            tackled strategies for Luminous on diamonds, positioning, perceptions, and channel mix.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="/images/CBS/CBS.png" alt="Students collaborating">
+                    </div>
+                </div>
+
+                <div class="event-gallery">
+                    <div class="gallery-item">
+                        <img src="/images/CBS/CBS 1.png" alt="Event presentation">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/images/CBS/CBS 2.png" alt="Winners celebration">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rounds">
+            <div class="container">
+                <h2 class="section-title">Competition Structure</h2>
+                <div class="round-container">
+                    <div class="round">
+                        <div class="round-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Round 1: Case Submission</h3>
+                        <p>Teams submitted their detailed case analyses and proposed solutions to the business challenge
+                            presented by Luminous.</p>
+                    </div>
+                    <div class="round">
+                        <div class="round-icon">
+                            <i class="fas fa-chalkboard"></i>
+                        </div>
+                        <h3>Round 2: Final Presentation</h3>
+                        <p>Shortlisted teams presented their strategies to a panel of judges, demonstrating innovative
+                            thinking and practical solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="challenge">
+            <div class="container">
+                <h2 class="section-title">The Challenge</h2>
+                <div class="challenge-content">
+                    <div class="challenge-box">
+                        <p>Participants developed strategies for Luminous to:</p>
+                        <ul>
+                            <li>Explore entry into the diamond business</li>
+                            <li>Analyze positioning and market perception</li>
+                            <li>Design an effective channel mix strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="judges">
+            <div class="container">
+                <h2 class="section-title">Panel of Judges</h2>
+                <p>The final presentations were evaluated by industry experts and faculty members, ensuring a fair and
+                    insightful assessment of each team's strategies.</p>
+            </div>
+        </section>
+
+        <section class="highlight">
+            <div class="container">
+                <div class="highlight-content">
+                    <h2>Celebrating Innovation</h2>
+                    <p>The CBS Case Study Challenge continues to be a platform that nurtures future leaders by providing
+                        real-world business exposure and celebrating innovation and problem-solving excellence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="partners">
+            <div class="container">
+                <h2 class="section-title">In Collaboration With</h2>
+                <div class="partner-logos">
+                    <div class="partner-logo">
+                        <i class="fas fa-leaf"></i>
+                        <span>Ecovision</span>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-crown"></i>
+                        <span>Grandeur</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('partials/footer') %>
+
+
+</body>
+
+<script src="/javascript/cbs.js"></script>
+
+</html>

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TEAM 2025-26</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .gradient-bg {
+            background:
+                linear-gradient(115deg,
+                    transparent 60%,
+                    rgba(68, 204, 255, 0.5) 70%,
+                    transparent 77%),
+                linear-gradient(295deg,
+                    transparent 60%,
+                    rgba(68, 204, 255, 0.5) 71%,
+                    transparent 79%),
+                #000;
+            min-height: calc(100vh - 68px);
+            padding: 60px 20px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3.6rem;
+            letter-spacing: 14px;
+            font-weight: 900;
+            color: #fff;
+            user-select: none;
+            margin: 0;
+        }
+
+        @keyframes slideInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hidden by default */
+        header h1,
+        .para {
+            opacity: 0;
+        }
+
+        /* Active animation classes */
+        .animate-h1 {
+            animation: slideInDown 1s ease-out forwards;
+        }
+
+        .animate-p {
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+
+
+        .team-type {
+            font-size: 2.5rem;
+            letter-spacing: 7px;
+            font-weight: 750;
+            color: #ffffff;
+            margin: 38px 0 22px 0;
+            text-align: center;
+            font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 0 0 12px;
+        }
+
+        .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 42px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card {
+            background: #000;
+            width: 270px;
+            padding: 67px 33px 54px;
+            border-radius: 38px 10px 38px 10px;
+            box-shadow: 0 14px 40px rgba(69, 169, 205, 0.5);
+            border: 2px solid #fff;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            outline: none;
+        }
+
+        .card2 {
+            background: #000;
+            width: 240px;
+            padding: 28px 18px 18px;
+            border-radius: 38px 10px 38px 10px;
+            box-shadow: 0 14px 40px rgba(69, 169, 205, 0.5);
+            border: 2px solid #fff;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            outline: none;
+        }
+
+        .card.alt-corners-rev {
+            border-radius: 10px 38px 10px 38px;
+        }
+
+        .card2.alt-corners-rev {
+            border-radius: 10px 38px 10px 38px;
+        }
+
+        .card:focus,
+        .card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 16px 48px rgba(68, 204, 255, 0.5);
+        }
+
+        .card2:focus,
+        .card2:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 16px 48px rgba(68, 204, 255, 0.5);
+        }
+
+        .card img {
+            width: 162px;
+            height: 162px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 18px rgba(68, 204, 255, 0.5);
+        }
+
+        .card2 img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 18px rgba(68, 204, 255, 0.5);
+        }
+
+        /* New rules to make larger card paragraph match smaller card paragraph */
+        .card p {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: rgb(13, 133, 252);
+            margin: 0;
+            white-space: normal;
+            /* Allow text to wrap for all cards */
+            word-wrap: break-word;
+        }
+
+        .card2 p {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: rgb(13, 133, 252);
+            margin: 0 0 5px 0;
+            white-space: normal;
+            /* Allow text to wrap for all cards */
+            word-wrap: break-word;
+        }
+
+        .linkedin-icon {
+            display: inline-block;
+            margin-top: 8px;
+            transition: transform 0.2s;
+            vertical-align: middle;
+        }
+
+        .linkedin-icon:hover,
+        .linkedin-icon:focus {
+            transform: scale(1.15);
+            filter: brightness(1.3);
+        }
+
+        .improved-team-header {
+            background: transparent;
+            border: none;
+            text-align: center;
+            padding: 2.8rem 1.5rem 2.5rem 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .improved-team-header p {
+            color: #b0b0b0;
+            font-weight: 600;
+            font-size: 1.3rem;
+            max-width: 540px;
+            margin: 0.5rem auto 0 auto;
+            text-shadow: 0 2px 10px #111, 0 0px 10px rgba(11, 184, 248, 0.5);
+        }
+
+        @media (max-width:700px) {
+            .improved-team-header {
+                padding: 1.3rem 0.7rem 1rem 0.7rem;
+            }
+
+            .improved-team-header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .card {
+                width: 243px;
+                padding: 45px 20px 35px;
+            }
+
+            .card img {
+                width: 135px;
+                height: 135px;
+                margin-bottom: 24px;
+            }
+
+            .card2 {
+                width: 180px;
+                padding: 18px 10px 10px;
+            }
+
+            .card2 img {
+                width: 75px;
+                height: 75px;
+                margin-bottom: 24px;
+            }
+
+            header h1 {
+                font-size: 100px;
+                letter-spacing: 12px;
+            }
+        }
+
+        .new-team h2 {
+            width: 100%;
+            text-align: center;
+            color: #ccc;
+            font-size: 2.8rem;
+            font-weight: 1000;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 8px;
+            margin: 40px 0 60px 0;
+            user-select: none;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .new-team h2 {
+                font-size: 1.8rem;
+                letter-spacing: 4px;
+                margin: 30px 0 40px 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .team {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90vw;
+                max-width: 337px;
+                padding: 40px 20px 32px;
+                border-radius: 30px 8px 30px 8px;
+            }
+
+            .card2 {
+                width: 90vw;
+                max-width: 200px;
+                padding: 40px 20px 32px;
+                border-radius: 30px 8px 30px 8px;
+            }
+
+            .card.alt-corners-rev {
+                border-radius: 8px 30px 8px 30px;
+            }
+
+            .card2.alt-corners-rev {
+                border-radius: 8px 30px 8px 30px;
+            }
+
+            .card img {
+                width: 121px;
+                height: 121px;
+                margin-bottom: 20px;
+            }
+
+            .card2 img {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 20px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 8px;
+                margin-bottom: 5px;
+            }
+
+            .team-type {
+                font-size: 1.2rem;
+                letter-spacing: 3px;
+                margin-top: 18px;
+                margin-bottom: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <div class="gradient-bg">
+            <header>
+                <h1>TEAM 2025-26</h1>
+            </header>
+            <section class="improved-team-header">
+                <p class="para">
+                    We are the people behind SYNERGY at SSCBS. Driven by passion, creativity, and vision—here's our core
+                    crew that makes it all possible!
+                </p>
+            </section>
+            </section>
+
+            <section class="team">
+                <div class="card alt-corners" tabindex="0">
+                    <img src="/images/teams/Kush Gupta.jpeg" alt="Kush Gupta" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Kush Gupta</h2>
+                    <p>PRESIDENT</p>
+                    <a href="https://www.linkedin.com/in/kush-gupta-4b853528b" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Kush Gupta on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Manya Bassi.jpeg" alt="Manya Bassi" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Manya Bassi</h2>
+                    <p>VICE PRESIDENT</p>
+                    <a href="https://www.linkedin.com/in/manya-bassi-9a2b82242" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Manya Bassi on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <br> <br>
+            <section class="team">
+                <div class="card alt-corners" tabindex="0">
+                    <img src="/images/teams/Kabir Upneja.jpeg" alt="Kabir Upneja" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Kabir Upneja</h2>
+                    <p>COORDINATOR</p>
+                    <a href="https://www.linkedin.com/in/kabir-upneja" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Kabir Upneja on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Kamya Gulyani.jpeg" alt="Kamya Gulyani" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Kamya Gulyani</h2>
+                    <p>COORDINATOR</p>
+                    <a href="https://www.linkedin.com/in/kamya-gulyani-claiming-all-my-dreams" class="linkedin-icon"
+                        target="_blank" rel="noopener noreferrer" aria-label="View Kamya Gulyani on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <section class="team mt-10">
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Daksh Jain.jpeg" alt="Daksh Jain" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Daksh Jain</h2>
+                    <p>HEAD OF OPERATIONS </p>
+                    <a href="https://www.linkedin.com/in/daksh-jain-087777326" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Daksh Jain on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Dhruv Nad.jpeg" alt="Dhruv Nad" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Dhruv Nad</h2>
+                    <p>HEAD OF INVESTMENT FUND</p>
+                    <a href="https://www.linkedin.com/in/dhruv-nad-576298211" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Dhruv Nad on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Vidushi Agarwal.jpeg" alt="Vidushi Agarwal" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Vidushi Agarwal</h2>
+                    <p>HEAD OF CREATIVES AND MARKETING(CONTENT)</p>
+                    <a href="https://www.linkedin.com/in/vidushi-agarwal01" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Vidushi Agarwal on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Yash Khanwani.jpeg" alt="Yash Khanwani" />
+                    <h2 style="font-size: 1rem; font-weight: 600;">Yash Khanwani</h2>
+                    <p>HEAD OF HR-CR</p>
+                    <a href="https://www.linkedin.com/in/yash-khanwani" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Yash Khanwani on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+
+            </section>
+            <h1 class="team-type"> ADVISORY COMMITTEE</h1>
+            <section class="team ">
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Harshveer Singh Chahal.jpeg" alt="Harshveer Singh Chahal" />
+                    <h2>Harshveer Singh Chahal</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/harshveer-singh-chahal" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Harshveer Singh Chahal on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Pragya.jpeg" alt="Pragya" />
+                    <h2>Pragya</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/pragya-%E2%80%8E-6993362b0" class="linkedin-icon"
+                        target="_blank" rel="noopener noreferrer" aria-label="View Pragya on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Sreshta R.jpeg" alt="Sreshta R" />
+                    <h2>Sreshta R</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/sreshta-r" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Sreshta R on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Utkarsh Kumar.jpeg" alt="Utkarsh Kumar" />
+                    <h2>Utkarsh Kumar</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/utkarsh-kumar-3a7753285" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Utkarsh Kumar on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <h1 class="team-type animate-on-scroll"> CORE COMMITTEE</h1>
+            <section class="team animate-on-scroll">
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Chirag Bhagat.jpeg" alt="Chirag Bhagat" />
+                    <h2>Chirag Bhagat</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/chiragbhagat1502" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Chirag Bhagat on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Dheeraj Biyani.jpeg" alt="Dheeraj Biyani" />
+                    <h2>Dheeraj Biyani</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/dheeraj-biyani-971465278" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Dheeraj Biyani on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Dhruv Gupta.jpeg" alt="Dhruv Gupta" />
+                    <h2>Dhruv Gupta</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/dhruv7x" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Dhruv Gupta on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Mannat Sagar.jpeg" alt="Mannat Sagar" />
+                    <h2>Mannat Sagar</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/mannat-sagar-0596a029a" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Mannat Sagar on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Rounak Choudhary.jpeg" alt="Rounak Choudhary" />
+                    <h2>Rounak Choudhary</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/rounak-choudhary-bb8ab3325" class="linkedin-icon"
+                        target="_blank" rel="noopener noreferrer" aria-label="View Rounak Choudhary on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Shaurya Singhal.jpeg" alt="Shaurya Singhal" />
+                    <h2>Shaurya Singhal</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/shaurya-singhal-53392231a" class="linkedin-icon"
+                        target="_blank" rel="noopener noreferrer" aria-label="View Shaurya Singhal on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/Tanmay Jain.jpeg" alt="Tanmay Jain" />
+                    <h2>Tanmay Jain</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/tanmay-jain-28623225b" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Tanmay Jain on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Utkarsh Gupta.jpeg" alt="Utkarsh Gupta" />
+                    <h2>Utkarsh Gupta</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/utkarsh-gupta-6236a1324" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Utkarsh Gupta on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <h1 class="team-type animate-on-scroll"> ORGANISING COMMITTEE</h1>
+            <section class="team animate-on-scroll">
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/AARAV VINAYAK.jpg" alt="Aarav Vinayak" />
+                    <h2>Aarav Vinayak</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/aarav-vinayak-289202378?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Aarav Vinayak on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/AKSHAT SINGHAL.jpg" alt="Akshat Singhal" />
+                    <h2>Akshat Singhal</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/akshat-singhal-001617368?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Akshat Singhal on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/ANSHIKA GOYAL.jpg" alt="Anshika Goyal" />
+                    <h2>Anshika Goyal</h2>
+                    <p>MEMBER</p>
+                    <a href="http://www.linkedin.com/in/anshika-goyal-201578380" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Anshika Goyal on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/ARSHITA.jpg" alt="Arshita" />
+                    <h2>Arshita</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/arshita-s-1371b6228?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Arshita on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/DROAN YADAV.jpeg" alt="Droan Yadav" />
+                    <h2>Droan Yadav</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/droan-yadav-268824375/" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Droan Yadav on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/GITANJALI CHUGH.jpg" alt="Gitanjali Chugh" />
+                    <h2>Gitanjali Chugh</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/gitanjali-chugh-b671a1378?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Gitanjali Chugh on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners-rev" tabindex="0">
+                    <img src="/images/teams/GURAMANT KAUR.jpg" alt="Guramant Kaur" />
+                    <h2>Guramant Kaur</h2>
+                    <p>MEMBER</p>
+                    <a href="http://www.linkedin.com/in/guramant-kaur-33a44937b" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Guramant Kaur on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/KALPESH SHARMA.jpg" alt="Kalpesh Sharma" />
+                    <h2>Kalpesh Sharma</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/kalpesh-sharma-03422b376?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3ByTOvfm0XScaJiUWLGmQolQ%3D%3D"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Kalpesh Sharma on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/KANAV GARG.jpg" alt="Kanav Garg" />
+                    <h2>Kanav Garg</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/kanav-garg-a07b25375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Kanav Garg on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/KARMANYA VISHWAKARMA.jpeg" alt="Karmanya" />
+                    <h2>Karmanya</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/karmanya-v-55882a20b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Karmanya on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/KARTIK KASANA.jpg" alt="Kartik Kasana" />
+                    <h2>Kartik Kasana</h2>
+                    <p>MEMBER</p>
+                    <a href="http://www.linkedin.com/in/kartik-kasana-099753280" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Kartik Kasana on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/KARTIKAY BATHLA.webp" alt="Kartikay Bathla" />
+                    <h2>Kartikay Bathla</h2>
+                    <p>MEMBER</p>
+                    <a href="https://in.linkedin.com/in/kartikay-bathla-6169a1378" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Kartikay Bathla on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/KASHVI GOEL.jpg" alt="Kashvi Goel" />
+                    <h2>Kashvi Goel</h2>
+                    <p>MEMBER</p>
+                    <a href="http://www.linkedin.com/in/kashvi-goel" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Kashvi Goel on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/- KASHVI JAIN.jpg" alt="Kashvi Jain" />
+                    <h2>Kashvi Jain</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/kashvi-jain-262353380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Kashvi Jain on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/madhav singhal.jpeg" alt="Madhav Singhal" />
+                    <h2>Madhav Singhal</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/madhavsinghal17/" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Madhav Singhal on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/MRITUNJAY MISHRA.jpg" alt="Mritunjay Mishra" />
+                    <h2>Mritunjay Mishra</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/mritunjay-mishra-3b51b8290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Mritunjay Mishra on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/NANDINEE KRUNAL.jpeg" alt="Nandinee" />
+                    <h2>Nandinee</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/nandinee-patel-99a023379" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Nandinee on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/NITYA NISTHA.jpg" alt="Nitya Nistha" />
+                    <h2>Nitya Nistha</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/nitya-nistha-711b53277/" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Nitya Nistha on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/PRINCY SANGHVI.jpeg" alt="Princy Sanghvi" />
+                    <h2>Princy Sanghvi</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/princy-sanghvi-837040300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Princy Sanghvi on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/roopkirat kaur.jpeg" alt="Roopkirat Kaur" />
+                    <h2>Roopkirat Kaur</h2>
+                    <p>MEMBER</p>
+                    <a href="http://linkedin.com/in/roopkirat-kaur-630215379" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Roopkirat Kaur on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/Soham Bharti.jpeg" alt="Soham Bharti" />
+                    <h2>Soham Bharti</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/sohambharti?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        class="linkedin-icon" target="_blank" rel="noopener noreferrer"
+                        aria-label="View Soham Bharti on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/SOMYA SAURABH.jpg" alt="Somya Jain" />
+                    <h2>Somya Jain</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/somya-jain-4266682a5" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Somya Jain on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="card2 alt-corners" tabindex="0">
+                    <img src="/images/teams/TWISHA RASTOGI.jpg" alt="Twisha Rastogi" />
+                    <h2>Twisha Rastogi</h2>
+                    <p>MEMBER</p>
+                    <a href="https://www.linkedin.com/in/twisha-rastogi-bb085a282" class="linkedin-icon" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Twisha Rastogi on LinkedIn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="whitesmoke"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.79-1.75-1.767s.784-1.765 1.75-1.765c.965 0 1.75.789 1.75 1.765s-.785 1.767-1.75 1.767zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.875-3.062-1.877 0-2.163 1.463-2.163 2.977v5.689h-3v-10h2.881v1.367h.041c.401-.762 1.381-1.565 2.844-1.565 3.038 0 3.6 2 3.6 4.597v5.601z" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <%- include('partials/footer') %>
+
+            <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+</body>
+
+<script src="include.js"></script>
+<script src="/javascript/team.js"></script>
+
+</html>

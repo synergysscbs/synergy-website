@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SYNERGY | SSCBS | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* --- Optimized Global Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            color: #fff;
+            overscroll-behavior: none;
+        }
+
+        /* --- Hero Section with Background Image --- */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/images/home/TEAM\ HOMEPAGE.jpeg') center/cover no-repeat;
+            z-index: -2;
+            filter: blur(2px);
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        /* --- Enhanced Center Logo --- */
+        #center-rotating-logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 20;
+            user-select: none;
+            width: 100%;
+            transition: opacity 0.5s ease;
+            will-change: opacity;
+        }
+
+        #center-rotating-logo {
+            width: min(650px, 90vw);
+            height: min(650px, 90vw);
+            animation: spinY 4s linear infinite;
+            margin-bottom: 5px !important;
+            object-fit: contain;
+            pointer-events: auto;
+            will-change: transform;
+            filter: drop-shadow(0 0 25px rgba(68, 204, 255, 0.5));
+        }
+
+        @keyframes spinY {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .animated-text {
+            font-family: "Montserrat", Arial, sans-serif;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            gap: 7px;
+            user-select: none;
+            filter: drop-shadow(0 0 14px #44ccffaa);
+            letter-spacing: 2px;
+            pointer-events: auto;
+            text-align: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            max-width: 90vw;
+            overflow-wrap: break-word;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            /* --- ADDED LINES FOR VISIBILITY --- */
+
+            /* Semi-transparent black background */
+            padding: 10px 20px;
+            /* Adds some space around the text */
+            border-radius: 12px;
+            /* Rounds the corners of the background */
+            backdrop-filter: blur(4px);
+            /* Further enhances readability */
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        /* --- MODIFIED ANIMATION FOR DROPPING EFFECT --- */
+        .animated-text span {
+            opacity: 0;
+            transform: translateY(-30px);
+            /* Start above final position */
+            animation: dropIn 0.6s ease-out forwards;
+            /* Use new dropIn animation */
+        }
+
+        @keyframes dropIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                /* Settle at final position */
+            }
+        }
+
+        #tagline-scroll {
+            position: fixed;
+            left: 18px;
+            bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            font-family: "Quicksand", Arial, sans-serif;
+            font-size: 1rem;
+            user-select: none;
+            z-index: 60;
+            transition: color 0.22s, opacity 0.5s ease;
+            letter-spacing: 0.03em;
+            padding: 3px 8px;
+            border-radius: 6px;
+            will-change: transform, opacity;
+        }
+
+        #tagline-scroll:hover {
+            color: #99ff44;
+        }
+
+        #tagline-scroll img {
+            width: 18px;
+            height: 18px;
+            transition: all 0.23s;
+        }
+
+        #tagline-scroll:hover img {
+            filter: drop-shadow(0 0 12px #b0ff6aff);
+        }
+
+        /* --- Optimized Content Sections --- */
+        .about-section,
+        .mission-vision {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 5vw;
+            border-radius: 20px;
+            background: transparent;
+            border: 1px solid rgba(68, 204, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: max-width 0.3s ease, padding 0.3s ease;
+            scroll-margin-top: 100px;
+            position: relative;
+            z-index: 30;
+        }
+
+        .about-section {
+            margin-top: 32px;
+        }
+
+        .mission-vision {
+            margin-top: 24px;
+            margin-bottom: 32px;
+        }
+
+        .about-section h2,
+        .mission-vision h2 {
+            color: #7ec0ff;
+            font-size: clamp(1.6rem, 5vw, 4rem);
+            font-family: "Montserrat", sans-serif;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 0.04em;
+        }
+
+        .about-section p,
+        .mission-vision p {
+            font-size: clamp(0.87rem, 3vw, 1.13rem);
+            color: #d8eafe;
+            font-weight: 400;
+            line-height: 1.65;
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+
+        /* --- Enhanced Marquee Section --- */
+        .marquee-section {
+            margin: 50px 0;
+            max-width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background-color: white;
+            overflow: hidden;
+            scroll-margin-top: 100px;
+            will-change: transform;
+            position: relative;
+            z-index: 30;
+        }
+
+        .marquee-section h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: black;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 140px;
+        }
+
+        .marquee-container.paused .marquee-content-wrapper {
+            animation-play-state: paused !important;
+        }
+
+        .marquee-content-wrapper {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-content {
+            flex: 0 0 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 50px;
+            padding: 10px 0;
+        }
+
+        .marquee-item {
+            flex: 0 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            will-change: transform;
+        }
+
+        .marquee-item img {
+            max-height: 100px;
+            max-width: 180px;
+            object-fit: contain;
+            transition: filter 0.3s ease, transform 0.3s ease;
+            will-change: transform;
+        }
+
+        .marquee-item:hover img {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+            transform-origin: center;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marquee-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        #achievements-marquee .marquee-content {
+            gap: 70px;
+        }
+
+        #achievements-marquee .marquee-content-wrapper {
+            animation: marquee-reverse 35s linear infinite;
+        }
+
+        /* --- Optimized Parallax and Particles --- */
+        .parallax-bg {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: -3;
+            transform: scale(1.1);
+        }
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            will-change: transform;
+        }
+
+        /* --- Optimized Latest Drops Section --- */
+        .latest-drops-section {
+            position: relative;
+            z-index: 30;
+            padding: 60px 20px;
+            scroll-margin-top: 100px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .latest-drops-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://media.istockphoto.com/id/2170146497/photo/business-team-analyzing-financial-data-in-modern-office.webp?a=1&b=1&s=612x612&w=0&k=20&c=7MndbiwQDZuL_lRMUvdmhNI6AfGINS6PRoD28EZZcfw=') center/cover no-repeat fixed;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .latest-drops-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+        }
+
+        .latest-drops-section h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: whitesmoke;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .cards-row {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .latest-card {
+            position: relative;
+            flex: 1 1 300px;
+            max-width: 320px;
+            height: 380px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: rgba(255 255 255 / 0.07);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: whitesmoke;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            text-align: left;
+            transform: translateZ(0);
+            will-change: transform, box-shadow;
+            text-decoration: none;
+        }
+
+        .center-card {
+            transform: scale(1.03) translateZ(0);
+            z-index: 20;
+            text-align: center;
+        }
+
+        .latest-card:hover {
+            transform: scale(1.05) translateZ(0);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+            z-index: 30;
+            background-color: rgba(255 255 255 / 0.1);
+        }
+
+        .latest-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            will-change: opacity;
+            pointer-events: none;
+        }
+
+        .latest-card:hover img {
+            opacity: 1;
+        }
+
+        .latest-card-content {
+            position: relative;
+            z-index: 2;
+            padding: 1.25rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        .latest-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .latest-card-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: #447ccc;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgb(68 140 203 / 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            background-color: #305a9c;
+        }
+
+        /* --- Media Queries (Optimized) --- */
+        @media (max-width: 768px) {
+            .marquee-section h2 {
+                font-size: 2rem;
+            }
+
+            .marquee-item img {
+                max-height: 80px;
+                max-width: 140px;
+            }
+
+            .marquee-content {
+                gap: 30px;
+            }
+
+            .marquee-container {
+                height: 120px;
+            }
+
+            #achievements-marquee .marquee-content {
+                gap: 40px;
+            }
+
+            .latest-card {
+                height: 360px;
+            }
+
+            #center-rotating-logo {
+                width: min(550px, 90vw);
+                height: min(550px, 90vw);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .about-section,
+            .mission-vision {
+                max-width: 98vw;
+                padding: 1.2rem 2vw;
+            }
+
+            .cards-row {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .latest-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+                height: 350px;
+            }
+
+            .center-card {
+                transform: scale(1) translateZ(0);
+            }
+
+            #center-rotating-logo {
+                width: min(500px, 90vw);
+                height: min(500px, 90vw);
+            }
+        }
+
+        @media (max-width: 550px) {
+            #tagline-scroll {
+                font-size: 0.84rem;
+                left: 3vw;
+                bottom: 8px;
+            }
+
+            #achievements-marquee .marquee-content {
+                gap: 30px;
+            }
+
+            .latest-drops-section h1 {
+                font-size: 1.9rem;
+            }
+
+            #center-rotating-logo {
+                width: min(450px, 90vw);
+                height: min(450px, 90vw);
+            }
+
+            .marquee-item img {
+                max-height: 60px;
+                max-width: 100px;
+            }
+
+            .marquee-container {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .marquee-item img {
+                max-height: 50px;
+                max-width: 80px;
+            }
+
+            .marquee-content {
+                gap: 20px;
+            }
+
+            .marquee-container {
+                height: 90px;
+            }
+
+            .latest-card-title {
+                font-size: 1.4rem;
+            }
+
+            #center-rotating-logo {
+                width: min(400px, 90vw);
+                height: min(400px, 90vw);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <%- include('partials/navbar') %>
+
+
+        <div class="parallax-bg"></div>
+        <div class="particles"></div>
+
+        <main>
+            <div class="hero-section">
+                <div class="hero-bg"></div>
+                <div id="center-rotating-logo-container" aria-label="Society Logo and Welcome Text">
+                    <div class="animated-text" id="welcome-msg" aria-live="polite" aria-atomic="true"></div>
+                    <img id="center-rotating-logo" src="/images/LOGO/synergy grey.png"
+                        alt="SYNERGYSSBS Center Rotating Logo" />
+                </div>
+            </div>
+
+            <div id="tagline-scroll" tabindex="0" role="button" aria-label="Scroll down to learn more">
+                <span>DREAM. DARE. DELIVER</span>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzk5ZmY0NCI+CiAgPHBhdGggZD0iTTEyIDE2LjhjLS4xNyAwLS4zMy0uMDYtLjQ2LS4xOWwtNi4xOS03YS42Ny42NyAwIDAgMSAuOTItLjk2bDYuNDIgNi41IDYuNDItNi41YS42Ny42NyAwIDAgMSAuOTIuOTZsLTYuODkgN2EuNjcuNjcgMCAwIDEtLjQ2LjE5eiIvPgo8L3N2Zz4="
+                    alt="Down arrow">
+            </div>
+
+            <section id="about-us" class="about-section">
+                <h2>About Us</h2>
+                <p>Back in 2009, Synergy was just a seed. A group of students hungry to learn more than the syllabus
+                    offered. Today, it's a cornerstone of SSCBS, synonymous with excellence, impact, and hustle with
+                    heart.
+                    We've worked on live corporate projects, led pan-India equity research, and built flagship platforms
+                    that allow students to experience the business world long before their first job. Our legacy is
+                    backed
+                    by accolades spanning across Harvard University, GMCC, IIM Ahmedabad, IIM Bangalore, BrAINWARS, and
+                    many
+                    more national and international stages. We've partnered with industry giants like Samsung,
+                    Panasonic,
+                    Google, Ogilvy, Zypp Electric, etc. Here deadlines are chased together, ideas spark at midnight, and
+                    every achievement is celebrated like a shared win. Yes, we're a corporate society. But more than
+                    that,
+                    we're a place that turns potential into proof.</p>
+            </section>
+
+            <section id="mission-vision" class="mission-vision">
+                <h2>Our Vision</h2>
+                <p>Our mission is to empower individuals through collaboration and innovation. We envision a society
+                    where
+                    every member contributes to a collective goal, fostering a culture of support and shared
+                    success.<br><br> Together, we aim to create impactful initiatives that resonate within our
+                    communities
+                    and beyond.</p>
+            </section>
+
+            <section id="partners-achievements" class="marquee-section">
+                <h2>OUR PARTNERS</h2>
+                <div class="marquee-container" id="partners-marquee">
+                    <div class="marquee-content-wrapper">
+                        <div class="marquee-content" aria-label="Our Partners">
+                            <span class="marquee-item"><img src="/images/home/our clients/John Jacobs.png"
+                                    alt="John Jacobs Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/Magic Billion.png"
+                                    alt="Magic Billion Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/Medulance.png"
+                                    alt="Medulance Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/meteor_venture_logo.jpeg"
+                                    alt="Meteor Venture Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/slp.png"
+                                    alt="SLP Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/zypp.jpg"
+                                    alt="Zypp Logo" /></span>
+
+
+                        </div>
+                        <div class="marquee-content" aria-hidden="true">
+                            <span class="marquee-item"><img src="/images/home/our clients/John Jacobs.png"
+                                    alt="John Jacobs Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/Magic Billion.png"
+                                    alt="Magic Billion Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/Medulance.png"
+                                    alt="Medulance Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/meteor_venture_logo.jpeg"
+                                    alt="Meteor Venture Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/slp.png"
+                                    alt="SLP Logo" /></span>
+                            <span class="marquee-item"><img src="/images/home/our clients/zypp.jpg"
+                                    alt="Zypp Logo" /></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <h2 style="margin-top: 50px;">OUR ACHIEVEMENTS</h2>
+                <div class="marquee-container" id="achievements-marquee">
+                    <div class="marquee-content-wrapper">
+                        <div class="marquee-content" aria-label="Our Achievements">
+                            <span class="marquee-item"><img src="/images/home/Achievements/Ashoka Uni.png"
+                                    alt="Ashoka University Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Birla ITS.png"
+                                    alt="BITS Pilani Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of EY.png"
+                                    alt="Ernst & Young (EY) Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of IIM A.png"
+                                    alt="IIM Ahmedabad Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of ISB.png"
+                                    alt="ISB Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of ITC.png"
+                                    alt="ITC Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Cornell.png"
+                                    alt="Cornell University Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/DTU.png"
+                                    alt="DTU Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/gmcc.webp"
+                                    alt="GMCC Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Grant Thorton.png"
+                                    alt="Grant Thorton Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Hansraj.png"
+                                    alt="Hansraj College Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/HKU Bus School.png"
+                                    alt="HKU Business School Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/hsbc logo.png"
+                                    alt="HSBC Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIM Bodhgaya.png"
+                                    alt="IIM Bodhgaya Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIM C.png"
+                                    alt="IIM Calcutta Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIMB.png"
+                                    alt="IIM Bangalore Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIT D.png"
+                                    alt="IIT Delhi Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIT K.png"
+                                    alt="IIT Kanpur Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIT R.png"
+                                    alt="IIT Roorkee Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/mdi.png"
+                                    alt="MDI Gurgaon Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Tapmi.png"
+                                    alt="TAPMI Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Utkarsh SFB.png"
+                                    alt="Utkarsh Small Finance Bank Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/XLRI.png"
+                                    alt="XLRI Logo" /></span>
+
+                        </div>
+                        <div class="marquee-content" aria-hidden="true">
+                            <span class="marquee-item"><img src="/images/home/Achievements/Ashoka Uni.png"
+                                    alt="Ashoka University Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Birla ITS.png"
+                                    alt="BITS Pilani Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of EY.png"
+                                    alt="Ernst & Young (EY) Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of IIM A.png"
+                                    alt="IIM Ahmedabad Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of ISB.png"
+                                    alt="ISB Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Copy of ITC.png"
+                                    alt="ITC Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Cornell.png"
+                                    alt="Cornell University Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/DTU.png"
+                                    alt="DTU Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/gmcc.webp"
+                                    alt="GMCC Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Grant Thorton.png"
+                                    alt="Grant Thorton Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Hansraj.png"
+                                    alt="Hansraj College Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/HKU Bus School.png"
+                                    alt="HKU Business School Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/hsbc logo.png"
+                                    alt="HSBC Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIM Bodhgaya.png"
+                                    alt="IIM Bodhgaya Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIM C.png"
+                                    alt="IIM Calcutta Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIMB.png"
+                                    alt="IIM Bangalore Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIT D.png"
+                                    alt="IIT Delhi Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIT K.png"
+                                    alt="IIT Kanpur Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/IIT R.png"
+                                    alt="IIT Roorkee Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/mdi.png"
+                                    alt="MDI Gurgaon Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Tapmi.png"
+                                    alt="TAPMI Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/Utkarsh SFB.png"
+                                    alt="Utkarsh Small Finance Bank Logo" /></span>
+
+                            <span class="marquee-item"><img src="/images/home/Achievements/XLRI.png"
+                                    alt="XLRI Logo" /></span>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="latest-drops" class="latest-drops-section">
+                <div class="latest-drops-container">
+                    <h1>Our Latest Drops</h1>
+                    <div class="cards-row">
+                        <a href="/pdf/Annual_Report_Synergy_24-25[1].pdf" target="_blank" class="latest-card"
+                            aria-label="Innovation Summit Details">
+                            <img src="./images/publication/annual.png" alt="Innovation Summit" />
+                            <div class="latest-card-content">
+                                <h2 class="latest-card-title">Annual Report 2024-25</h2>
+                                <p class="latest-card-desc">Discover breakthrough ideas at our annual corporate
+                                    innovation
+                                    event.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+
+                        <a href="/pdf/Equity_Research_Report.pdf" target="_blank" class="latest-card center-card"
+                            aria-label="Leadership Workshop Details">
+                            <img src="./images/publication/equity.png" alt="Leadership Workshop" />
+                            <div class="latest-card-content">
+                                <h2 class="latest-card-title">Asian Paint - Equity Research Report</h2>
+                                <p class="latest-card-desc">Interactive sessions to boost your leadership and
+                                    communication
+                                    skills.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+
+                        <a href="/pdf/EV_Report.pdf" target="_blank" class="latest-card"
+                            aria-label="Corporate Social Drive Details">
+                            <img src="/images/industry-report/EV_Industry.jpg" alt="Corporate Social Drive" />
+                            <div class="latest-card-content">
+                                <h2 class="latest-card-title">Electric Vehicle Industry Research Report</h2>
+                                <p class="latest-card-desc">Join hands for a meaningful cause impacting our local
+                                    community.
+                                </p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+
+
+</body>
+
+<script src="/javascript/homepage.js"></script>
+<script src="include.js"></script>
+
+</html>

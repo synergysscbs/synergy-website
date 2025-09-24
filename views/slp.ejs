@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustain Labs Paris | Premium Project Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #448CCB;
+            --primary-light: #64b5f6;
+            --primary-dark: #2a6ca7;
+            --accent: #d8b4fe;
+            --dark-bg: #0a0e15;
+            --card-bg: rgba(18, 24, 36, 0.85);
+            --text: #ffffff;
+            --text-light: #aeb9c4;
+            --text-lighter: #8a96a6;
+            --highlight: #448CCB;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            --border: 1px solid rgba(68, 140, 203, 0.15);
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(68, 140, 203, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(100, 181, 246, 0.05) 0%, transparent 25%),
+                linear-gradient(135deg, #0a0e15 0%, #09101f 100%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 50px 0 30px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
+            background: rgba(18, 24, 36, 0.8);
+            padding: 20px 40px;
+            border-radius: 50px;
+            backdrop-filter: blur(12px);
+            border: var(--border);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #448CCB, #64b5f6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(68, 140, 203, 0.4);
+        }
+
+        /* Styling for the new icon */
+        .logo-img i {
+            font-size: 50px;
+            color: #ffffff;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 34px;
+            letter-spacing: 1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text);
+            text-shadow: 0 0 15px rgba(68, 140, 203, 0.3);
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.5px;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .project-subtitle {
+            font-size: clamp(1.4rem, 3.5vw, 1.7rem);
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 40px auto 50px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        /* Image Gallery */
+        .gallery-section {
+            padding: 70px 0;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .gallery-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(10, 14, 21, 0.9));
+            color: var(--text);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .gallery-overlay p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Content Sections */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+            letter-spacing: -0.5px;
+        }
+
+        .section-header.animated h2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .section-header p {
+            max-width: 800px;
+            margin: 50px auto 0;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(20px);
+            line-height: 1.7;
+        }
+
+        .section-header.animated p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 50px 45px;
+            backdrop-filter: blur(16px);
+            border: var(--border);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(68, 140, 203, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 35px;
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* New styling for the large card p tags to match small card p tags */
+        .card p {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: rgb(13, 133, 252);
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .point-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 35px;
+        }
+
+        .point-list li {
+            padding: 18px 0;
+            padding-left: 45px;
+            position: relative;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.2rem;
+        }
+
+        .point-list li:last-child {
+            border-bottom: none;
+        }
+
+        .point-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background: rgba(68, 140, 203, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 28px;
+        }
+
+        .point-list li strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 35px;
+            margin: 70px 0;
+        }
+
+        .stat-item {
+            background: rgba(18, 24, 36, 0.85);
+            border-radius: 20px;
+            padding: 45px 35px;
+            text-align: center;
+            backdrop-filter: blur(16px);
+            border: var(--border);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .stat-item.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-15px) scale(1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            background: rgba(22, 30, 46, 0.9);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+        }
+
+        /* Student Project Section */
+        .student-project {
+            background: linear-gradient(135deg, rgba(18, 24, 36, 0.85), rgba(22, 30, 46, 0.85));
+            border-radius: 30px;
+            padding: 80px 70px;
+            margin: 90px 0;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .student-project.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .student-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(68, 140, 203, 0.2), rgba(100, 181, 246, 0.2));
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            position: relative;
+            border-left: 5px solid var(--primary);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .highlight-box.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight-box::before {
+            content: '"';
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8rem;
+            color: var(--text-light);
+            opacity: 0.08;
+            position: absolute;
+            top: -50px;
+            left: 30px;
+        }
+
+        .highlight-box p {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--text);
+            margin-left: 20px;
+            font-weight: 300;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-box p strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-25px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1100px;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .student-project {
+                padding: 60px 50px;
+            }
+
+            .highlight-box p {
+                font-size: 1.6rem;
+            }
+
+            .card-grid {
+                gap: 40px;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .student-project {
+                padding: 50px 40px;
+                margin: 70px 0;
+            }
+
+            .highlight-box {
+                padding: 40px 30px;
+            }
+
+            .highlight-box p {
+                font-size: 1.4rem;
+                margin-left: 10px;
+            }
+
+            .container {
+                padding: 0 30px;
+            }
+
+            .logo-container {
+                padding: 15px 30px;
+            }
+
+            .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            /* Adjustments for centered content inside the card */
+            .card {
+                padding: 40px 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .card h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .point-list li {
+                text-align: left;
+                padding-left: 45px;
+            }
+
+            .point-list li::before {
+                left: 0;
+            }
+
+            .student-project .card {
+                padding: 40px 30px;
+                text-align: center;
+                align-items: center;
+            }
+
+            .highlight-box {
+                text-align: left;
+            }
+
+            .highlight-box p {
+                margin-left: 0;
+            }
+        }
+
+        /* The key change: Apply hover-like effects to gallery items on smaller screens */
+        @media (max-width: 640px) {
+            .gallery-item {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .gallery-item .gallery-img {
+                transform: scale(1.05);
+            }
+
+            .gallery-item .gallery-overlay {
+                opacity: 1;
+                transform: translateY(0);
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header p {
+                font-size: 1.1rem;
+            }
+
+            .card {
+                padding: 40px 30px;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top-anchor"></div>
+
+    <%- include('partials/navbar') %>
+
+        <header>
+            <div class="container">
+                <div class="logo-container">
+                    <div class="logo-img">
+                        <i class="fas fa-building-columns"></i>
+                    </div>
+                    <div class="logo-text">SUSTAIN LABS PARIS</div>
+                </div>
+                <h1 class="project-title">Student Consulting Project</h1>
+                <p class="project-subtitle">Scaling Admissions at Anant School of Climate Action</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="gallery-section">
+                <div class="section-header">
+                    <h2>Our Impact in Action</h2>
+                    <p>Visualizing our journey in transforming climate education</p>
+                </div>
+
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <img src="/images/slp/WhatsApp Image 2025-08-13 at 21.53.09_97957e96.jpg"
+                            alt="Sustainable Campus" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Anant School Campus</h3>
+                            <p>India's first climate-tech university campus</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="/images/slp/IMG-20250807-WA0093 (1).jpg" alt="Student Collaboration"
+                            class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Student Collaboration</h3>
+                            <p>Team working on sustainable solutions</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="/images/slp/slp2.jpg" alt="Climate Innovation" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Climate Innovation</h3>
+                            <p>Developing solutions for a sustainable future</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Sustain Labs Paris</h2>
+                    <p>Building ventures and assets that profoundly move the needle towards a sustainable future</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3>Global Sustainable Ventures</h3>
+                        <p>Founded in 2017 with operations across India, UAE, and New Zealand, SLP manages innovative
+                            ventures focused on sustainability and environmental impact.</p>
+
+                        <ul class="point-list">
+                            <li><strong>51-200 employees</strong> driving sustainable innovation</li>
+                            <li><strong>Venture Capital and Private Equity</strong> focus</li>
+                            <li><strong>Global perspective</strong> on sustainability challenges</li>
+                            <li><strong>10 climate schools</strong> planned in vulnerable regions</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Key Ventures & Impact</h3>
+                        <p>SLP creates transformative projects that address critical environmental challenges through
+                            innovation and collaboration.</p>
+
+                        <ul class="point-list">
+                            <li><strong>Carbon Capture Company</strong> - First Middle East-focused service</li>
+                            <li><strong>Sustainability DIY</strong> - Microsoft-partnered online platform</li>
+                            <li><strong>Anant School</strong> - India's first climate-tech university</li>
+                            <li><strong>Stargazers Foundation</strong> - Rehabilitating street children</li>
+                            <li><strong>GITEX Impact Councils</strong> at Dubai World Trade Centre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Student Consulting Project</h2>
+                    <p>Scaling admissions at Anant School of Climate Action</p>
+                </div>
+
+                <div class="student-project">
+                    <div class="card">
+                        <h3 style="color: var(--primary);">Project Impact</h3>
+
+                        <div class="highlight-box">
+                            <p>Through strategic initiatives, we <strong>doubled enrollment</strong> from 15 to 30
+                                students in a single admissions cycle at India's first climate-tech university</p>
+                        </div>
+
+                        <h3>Our Approach</h3>
+                        <ul class="point-list">
+                            <li><strong>Strategic Communication</strong> - Developed tailored messaging and persona maps
+                                for students and parents</li>
+                            <li><strong>Industry Collaborations</strong> - Established 30+ partnerships to enhance
+                                student engagement</li>
+                            <li><strong>Digital Outreach</strong> - Created targeted campaigns to address geographical
+                                awareness gaps</li>
+                        </ul>
+
+                        <h3>Long-Term Strategy</h3>
+                        <ul class="point-list">
+                            <li><strong>Expansion Roadmap</strong> - Developed 5-year growth strategy for climate
+                                education</li>
+                            <li><strong>Strategic Partnerships</strong> - Identified key collaboration opportunities
+                            </li>
+                            <li><strong>Positioning Framework</strong> - Aligned university vision with climate-tech
+                                innovation</li>
+                            <li><strong>Student-First Design</strong> - Implemented UX principles in educational
+                                experience</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2>Project Outcomes</h2>
+                    <p>Measurable results from our consulting engagement</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">Enrollment Growth</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="30">0</div>
+                        <div class="stat-label">Collaborations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Persona Profiles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+
+</body>
+<script src="/javascript/slp.js"></script>
+
+</html>
