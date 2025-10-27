@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Navbar | SYNERGY</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * { 
+        box-sizing: border-box; 
+        margin: 0; 
+        padding: 0; 
+    }
+
+    nav {
+      background-color: transparent;
+      backdrop-filter: saturate(180%) blur(8px);
+      -webkit-backdrop-filter: saturate(180%) blur(8px);
+      border-radius: 0;
+      padding: 1.1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background-color: rgba(21, 20, 20, 0.85);
+      border-radius: 0 0 25px 25px;
+      box-shadow: 0 4px 25px #44ccff30;
+      padding: 0.8rem 2rem;
+    }
+
+    nav .left {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    nav img.logo-img {
+      width: 95px;
+      height: 65px;
+      border-radius: 10px; 
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    nav img.logo-img:hover {
+      transform: scale(1.08);
+    }
+
+    nav .brand-name {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      background: linear-gradient(91deg, #ffffff 0%, #02c2fde5 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 3px 15px #1c355982;
+      white-space: nowrap;
+    }
+
+    nav ul.nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul.nav-links li a {
+      color: #e3eaf7cc;
+      font-weight: 600;
+      letter-spacing: 0.25px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      transition: background-color 0.24s, color 0.24s;
+      text-decoration: none;
+      font-size: 0.98rem;
+      white-space: nowrap;
+    }
+
+    nav ul.nav-links li a:hover,
+    nav ul.nav-links li a:focus {
+      color: #44ccff;
+      background-color: #44ccff29;
+      box-shadow: 0 0 14px #44ccff44;
+    }
+
+    nav ul.nav-links li a.active {
+      color: #33dbff;
+      font-weight: 700;
+      text-shadow: 0 0 5px #33dbffaa;
+    }
+
+    #menu-btn {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    #menu-btn img {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 0.8rem 1rem;
+        flex-wrap: nowrap;
+      }
+
+      nav img.logo-img {
+        width: 65px;
+        height: 65px;
+        border-radius: 8px; 
+      }
+
+      nav .brand-name {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+
+      #menu-btn {
+        display: block;
+      }
+
+      #menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(17, 20, 34, 0.95);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        flex-direction: column;
+        padding: 20px 0;
+      }
+
+      #menu.show {
+        display: flex !important;
+      }
+
+      nav ul.nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav ul.nav-links li a {
+        display: block;
+        padding: 15px;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav role="navigation" aria-label="Primary Navigation" id="main-nav">
+    <div class="left" aria-label="Logo and Brand name">
+      <img class="logo-img" src="/images/LOGO/synergy grey.png" alt="SYNERGY Logo" />
+      <span class="brand-name">SYNERGY | SSCBS</span>
+    </div>
+
+    <button id="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="menu">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NGNjZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8bGluZSB4MT0iMyIgeTE9IjYiIHgyPSIyMSIgeTI9IjYiPjwvbGluZT4KICA8bGluZSB4MT0iMyIgeTE9IjEyIiB4Mj0iMjEiIHkyPSIxMiI+PC9saW5lPgogIDxsaW5lIHgxPSIzIiB5MT0iMTgiIHgyPSIyMSIgeTI9IjE4Ij48L2xpbmU+Cjwvc3ZnPg==" alt="Menu Icon">
+    </button>
+
+    <ul class="nav-links" id="menu" role="menu">
+      <li><a href="/" role="menuitem">About Us</a></li>
+      <li><a href="/project" role="menuitem">Projects</a></li>
+      <li><a href="/publications" role="menuitem">Publications</a></li>
+      <li><a href="/events" role="menuitem">Events</a></li>
+      <li><a href="/initiatives" role="menuitem">Initiatives</a></li>
+      <li><a href="/team" role="menuitem">Team</a></li>
+      <li><a href="/contact" role="menuitem">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburger = document.getElementById("menu-btn");
+      const menu = document.getElementById("menu");
+
+      if (hamburger && menu) {
+        hamburger.addEventListener("click", () => {
+          const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
+          hamburger.setAttribute("aria-expanded", !isExpanded);
+          menu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove("show");
+            hamburger.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        document.querySelectorAll('#menu a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.remove('show');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      const navbar = document.getElementById('main-nav');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          navbar.classList.toggle('scrolled', window.scrollY > 10);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

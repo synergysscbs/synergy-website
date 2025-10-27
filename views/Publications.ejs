@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SYNERGY-SSCBS | Publications</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <%- include('partials/head') %>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --bg-color: #000;
+            --text-color: #d1d8e0;
+            --primary-color: #448CCB;
+            --secondary-color: #2b53d9;
+            --dark-bg: #111111;
+            --card-bg: rgba(17, 17, 17, 0.7);
+            --border-color: rgba(68, 204, 255, 0.2);
+            --transition-speed: 0.4s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Skewed Gradient Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(to right, var(--bg-color) 50%, var(--primary-color) 100%);
+            transform: skewY(-12deg);
+            transform-origin: top left;
+            z-index: -1;
+        }
+
+        /* Main Content */
+        .publications-container {
+            max-width: 900px;
+            margin: 3rem auto 2rem auto;
+            padding: 0 2rem;
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .publications-container h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(91deg, #fff 40%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInSlideDown 1s forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Cards Section */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        .publication-card {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .publication-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(68, 140, 203, 0.15);
+            border-color: rgba(68, 140, 203, 0.3);
+        }
+
+        .card-inner {
+            padding: 2.5rem 2rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-inner h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+            cursor: default;
+            overflow: hidden;
+        }
+
+        .card-inner h2 .word {
+            display: inline-block;
+            transition: all 0.3s ease;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .card-inner h2.animate-in .word {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card-inner p {
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+            cursor: default;
+            overflow: hidden;
+        }
+
+        .card-inner p .word {
+            display: inline-block;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .card-inner p.animate-in .word {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .publication-card:hover .card-inner p {
+            opacity: 1;
+        }
+
+        .view-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(68, 140, 203, 0.3);
+            text-decoration: none;
+            position: relative;
+            z-index: 4;
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        .view-btn.animate-in {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(68, 140, 203, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(68, 140, 203, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(68, 140, 203, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(68, 140, 203, 0);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        /* Scroll Animation Styles */
+        .card-inner h2.scroll-down .word,
+        .card-inner p.scroll-down .word {
+            animation: slideInFromBottom 0.6s ease forwards;
+        }
+
+        .card-inner h2.scroll-up .word,
+        .card-inner p.scroll-up .word {
+            animation: slideInFromTop 0.6s ease forwards;
+        }
+
+        /* Scroll direction animations */
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger animation for scroll-triggered elements */
+        .card-inner h2.scroll-down .word,
+        .card-inner h2.scroll-up .word {
+            animation-delay: calc(var(--word-index, 0) * 0.1s);
+        }
+
+        .card-inner p.scroll-down .word,
+        .card-inner p.scroll-up .word {
+            animation-delay: calc(var(--word-index, 0) * 0.05s + 0.2s);
+        }
+
+        /* Set word indices for staggered animation */
+        .card-inner h2 .word,
+        .card-inner p .word {
+            --word-index: 0;
+        }
+
+        .card-inner h2 .word:nth-child(1) {
+            --word-index: 1;
+        }
+
+        .card-inner h2 .word:nth-child(2) {
+            --word-index: 2;
+        }
+
+        .card-inner h2 .word:nth-child(3) {
+            --word-index: 3;
+        }
+
+        .card-inner h2 .word:nth-child(4) {
+            --word-index: 4;
+        }
+
+        .card-inner h2 .word:nth-child(5) {
+            --word-index: 5;
+        }
+
+        .card-inner h2 .word:nth-child(6) {
+            --word-index: 6;
+        }
+
+        .card-inner h2 .word:nth-child(7) {
+            --word-index: 7;
+        }
+
+        .card-inner h2 .word:nth-child(8) {
+            --word-index: 8;
+        }
+
+        .card-inner h2 .word:nth-child(9) {
+            --word-index: 9;
+        }
+
+        .card-inner h2 .word:nth-child(10) {
+            --word-index: 10;
+        }
+
+        .card-inner p .word:nth-child(1) {
+            --word-index: 1;
+        }
+
+        .card-inner p .word:nth-child(2) {
+            --word-index: 2;
+        }
+
+        .card-inner p .word:nth-child(3) {
+            --word-index: 3;
+        }
+
+        .card-inner p .word:nth-child(4) {
+            --word-index: 4;
+        }
+
+        .card-inner p .word:nth-child(5) {
+            --word-index: 5;
+        }
+
+        .card-inner p .word:nth-child(6) {
+            --word-index: 6;
+        }
+
+        .card-inner p .word:nth-child(7) {
+            --word-index: 7;
+        }
+
+        .card-inner p .word:nth-child(8) {
+            --word-index: 8;
+        }
+
+        .card-inner p .word:nth-child(9) {
+            --word-index: 9;
+        }
+
+        .card-inner p .word:nth-child(10) {
+            --word-index: 10;
+        }
+
+        .card-inner p .word:nth-child(11) {
+            --word-index: 11;
+        }
+
+        .card-inner p .word:nth-child(12) {
+            --word-index: 12;
+        }
+
+        .card-inner p .word:nth-child(13) {
+            --word-index: 13;
+        }
+
+        .card-inner p .word:nth-child(14) {
+            --word-index: 14;
+        }
+
+        .card-inner p .word:nth-child(15) {
+            --word-index: 15;
+        }
+
+        .card-inner p .word:nth-child(16) {
+            --word-index: 16;
+        }
+
+        .card-inner p .word:nth-child(17) {
+            --word-index: 17;
+        }
+
+        .card-inner p .word:nth-child(18) {
+            --word-index: 18;
+        }
+
+        .card-inner p .word:nth-child(19) {
+            --word-index: 19;
+        }
+
+        .card-inner p .word:nth-child(20) {
+            --word-index: 20;
+        }
+
+        /* Reset animation states */
+        .card-inner h2.scroll-animated .word,
+        .card-inner p.scroll-animated .word {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .publications-container {
+                padding: 0 1rem;
+            }
+
+            .card-inner {
+                padding: 1.5rem;
+            }
+
+            .card-inner h2 {
+                font-size: 2rem;
+            }
+
+            .view-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+        <div class="publications-container">
+            <h1>Our Publications</h1>
+            <div class="cards-container">
+                <div class="publication-card">
+                    <div class="card-inner">
+                        <h2>Annual Report</h2>
+                        <p>Our comprehensive annual report highlighting the society's achievements, financial
+                            performance, and strategic direction for the upcoming year. Includes detailed analysis of
+                            our activities and impact.</p>
+                        <a class="view-btn" href="./pdf/Annual_Report_Synergy_24-25[1].pdf" target="_blank">
+                            <i class="ri-file-text-line"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <div class="card-inner">
+                        <h2>Industry Research Reports</h2>
+                        <p>In-depth analysis of various industries, market trends, and competitive landscapes prepared
+                            by our research team. Essential reading for professionals and students alike.</p>
+                        <a class="view-btn" href="/publications/industryreports" target="_self">
+                            <i class="ri-external-link-line"></i> View
+                        </a>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <div class="card-inner">
+                        <h2>Equity Research Reports</h2>
+                        <p>Detailed analysis of stocks and equity markets, including company valuations, financial
+                            modeling, and investment recommendations. Perfect for investors and finance enthusiasts.</p>
+                        <a class="view-btn" href="./pdf/Equity_Research_Report.pdf" target="_blank">
+                            <i class="ri-file-text-line"></i> View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>
+
+</body>
+<script src="/javascript/publications.js"></script>
+
+</html>
