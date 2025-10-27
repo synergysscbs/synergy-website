@@ -1,0 +1,11 @@
+# robots.txt for SYNERGYSSBS
+User-agent: *
+Allow: /
+
+# Prevent search engines from indexing temporary or private folders
+Disallow: /node_modules/
+Disallow: /temp/
+Disallow: /uploads/
+
+# Sitemap location
+Sitemap: https://www.synergysscbs.com/

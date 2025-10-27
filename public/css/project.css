@@ -1,0 +1,23 @@
+#projects-page .fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#projects-page .fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#projects-page #progress-bar {
+  transition: transform 0.1s linear;
+}
+
+/* Project card hover scaling */
+.project-card .card-bg {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .card-bg {
+  transform: scale(1.1);
+}
