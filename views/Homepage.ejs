@@ -103,22 +103,12 @@
             width: min(650px, 90vw);
             height: auto;
             max-height: 60vh;
-            animation: spinY 4s linear infinite;
             margin-bottom: 8px;
             object-fit: contain;
             pointer-events: auto;
             will-change: transform;
             filter: drop-shadow(0 0 25px rgba(68, 204, 255, 0.5));
-        }
-
-        @keyframes spinY {
-            from {
-                transform: rotateY(0deg);
-            }
-
-            to {
-                transform: rotateY(360deg);
-            }
+            transform: scale(1.95);
         }
 
         .animated-text {
@@ -302,6 +292,19 @@
             object-fit: contain;
             transition: filter 0.3s ease, transform 0.3s ease;
             will-change: transform;
+        }
+
+        .marquee-item.small-logo img {
+            max-height: 160px;
+        }
+
+        .marquee-item.small-logo-2 img {
+            max-height: 300px;
+        }
+
+        .marquee-item.small-logo-2:hover img{
+            transform: scale(1.15);
+            filter: none;
         }
 
         .marquee-item:hover img {
@@ -641,13 +644,13 @@
                         <div class="marquee-content" aria-label="Our Partners">
                             <span class="marquee-item"><img src="/images/home/our clients/John Jacobs.png"
                                     alt="John Jacobs Logo" /></span>
-                            <span class="marquee-item"><img src="/images/home/our clients/Magic Billion.png"
+                            <span class="marquee-item small-logo"><img src="/images/home/our clients/Magic Billion.png"
                                     alt="Magic Billion Logo" /></span>
                             <span class="marquee-item"><img src="/images/home/our clients/Medulance.png"
                                     alt="Medulance Logo" /></span>
-                            <span class="marquee-item"><img src="/images/home/our clients/meteor_venture_logo.jpeg"
+                            <span class="marquee-item small-logo-2"><img src="/images/home/our clients/meteor_venture_logo.jpeg"
                                     alt="Meteor Venture Logo" /></span>
-                            <span class="marquee-item"><img src="/images/home/our clients/slp.png"
+                            <span class="marquee-item small-logo-2"><img src="/images/home/our clients/slp.png"
                                     alt="SLP Logo" /></span>
                             <span class="marquee-item"><img src="/images/home/our clients/zypp.png"
                                     alt="Zypp Logo" /></span>
@@ -657,13 +660,13 @@
                         <div class="marquee-content" aria-hidden="true">
                             <span class="marquee-item"><img src="/images/home/our clients/John Jacobs.png"
                                     alt="John Jacobs Logo" /></span>
-                            <span class="marquee-item"><img src="/images/home/our clients/Magic Billion.png"
+                            <span class="marquee-item small-logo"><img src="/images/home/our clients/Magic Billion.png"
                                     alt="Magic Billion Logo" /></span>
                             <span class="marquee-item"><img src="/images/home/our clients/Medulance.png"
                                     alt="Medulance Logo" /></span>
-                            <span class="marquee-item"><img src="/images/home/our clients/meteor_venture_logo.jpeg"
+                            <span class="marquee-item small-logo-2"><img src="/images/home/our clients/meteor_venture_logo.jpeg"
                                     alt="Meteor Venture Logo" /></span>
-                            <span class="marquee-item"><img src="/images/home/our clients/slp.png"
+                            <span class="marquee-item small-logo-2"><img src="/images/home/our clients/slp.png"
                                     alt="SLP Logo" /></span>
                             <span class="marquee-item"><img src="/images/home/our clients/zypp.jpg"
                                     alt="Zypp Logo" /></span>

@@ -96,6 +96,41 @@
             color: white;
         }
 
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+
+            font-size: 52px;
+
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+
+            background: #44ccff;
+            color: #000;
+            font-weight: bold;
+
+            border: none;
+            cursor: pointer;
+
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            z-index: 1000;
+
+            box-shadow: 0 0 16px rgba(68, 204, 255, 0.55);
+        }
+
+        #scrollToTopBtn.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+
         /* Responsive logo sizes */
         @media (min-width: 768px) {
             .footer-logo {
@@ -136,20 +171,51 @@
             </div>
         </div>
     </footer>
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        ↑
+    </button>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const brandBlock = document.getElementById('footer-brand-block');
-            if (brandBlock) {
-                brandBlock.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // existing footer logo logic (UNCHANGED)
+        const brandBlock = document.getElementById('footer-brand-block');
+        if (brandBlock) {
+            brandBlock.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
+            });
+        }
+
+        // NEW scroll-to-top button logic
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+        const footer = document.getElementById('contact-us');
+
+        if (!scrollBtn || !footer) return;
+
+        window.addEventListener('scroll', () => {
+            const footerTop = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            // show when footer is near viewport
+            if (footerTop < windowHeight * 0.9) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
             }
         });
-    </script>
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
 </body>
 
 </html>
