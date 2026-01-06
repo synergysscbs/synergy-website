@@ -79,7 +79,7 @@
             z-index: -1;
         }
 
-
+/*
         #center-rotating-logo-container {
             position: absolute;
             left: 50%;
@@ -94,6 +94,21 @@
             transition: top 220ms ease, opacity 220ms ease;
             pointer-events: none;
         }
+*/
+        #center-rotating-logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;          /* CHANGED from 100% */
+            overflow: hidden;     /* ADDED */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 5;
+        }
+
 
         #center-rotating-logo-container>* {
             pointer-events: auto;
