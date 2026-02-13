@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Reports | SYNERGY SSCBS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+        <%- include('partials/head') %>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --bg-color: #000;
+            --primary-color: #448CCB;
+            --dark-bg: #111111;
+            --card-bg: rgba(17, 17, 17, 0.7);
+            --border-color: rgba(68, 204, 255, 0.2);
+            --transition-speed: 0.4s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 35%, #16213e 70%, #0f3460 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(68, 140, 203, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(68, 140, 203, 0.15) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                transform: translateX(-10px) translateY(-10px);
+            }
+
+            100% {
+                transform: translateX(10px) translateY(10px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #fff, #448CCB, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .lottie-hero {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Reports Section */
+        .reports-section {
+            padding: 60px 20px;
+            flex-grow: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #448CCB, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            position: relative;
+            height: 320px;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(68, 140, 203, 0.4);
+        }
+
+        .card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease;
+            filter: brightness(0.7);
+        }
+
+        .card:hover .card-background {
+            filter: brightness(0.4);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-overlay {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-content {
+            transform: translateY(-8px);
+        }
+
+        .card-initial {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-initial {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+
+        .card-hover-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card:hover .card-hover-content {
+            opacity: 1;
+            transform: translate(-50%, -50%) translateY(0);
+        }
+
+        .report-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .report-subtitle {
+            font-size: 0.9rem;
+            color: #448CCB;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .open-report-btn {
+            background: rgba(68, 140, 203, 0.8);
+            border: 2px solid #448CCB;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .open-report-btn:hover {
+            background: #448CCB;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(68, 140, 203, 0.4);
+        }
+
+        .lottie-card {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            filter: brightness(1.2);
+        }
+
+        .card-year {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 80px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            color: #fff;
+        }
+
+        /* Mobile Touch Support */
+        @media (hover: none) and (pointer: coarse) {
+            .card:active {
+                transform: translateY(-15px) scale(1.02);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(68, 140, 203, 0.4);
+            }
+
+            .card:active .card-background {
+                filter: brightness(0.4);
+            }
+
+            .card:active .card-overlay {
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            .card:active .card-content {
+                transform: translateY(-8px);
+            }
+
+            .card:active .card-initial {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            .card:active .card-hover-content {
+                opacity: 1;
+                transform: translate(-50%, -50%) translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero {
+                padding: 40px 20px 30px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                height: 280px;
+            }
+
+            /* Mobile card interactions */
+            .card {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            /* Show hover content on mobile by default or on touch */
+            .card .card-hover-content {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .card.touched .card-initial {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            .card.touched .card-hover-content {
+                opacity: 1;
+                transform: translate(-50%, -50%) translateY(0);
+            }
+
+            .card.touched .card-background {
+                filter: brightness(0.4);
+            }
+
+            .card.touched .card-overlay {
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            .card.touched .card-content {
+                transform: translateY(-8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="lottie-hero" id="heroAnimation"></div>
+                <h1>EQUITY REPORTS</h1>
+                <p class="hero-subtitle">Analyze company performance through comprehensive financial and strategic reports.</p>
+            </div>
+        </section>
+
+        <main class="reports-section">
+            <h2 class="section-title">Company-wise Financial Analysis</h2>
+
+            <div class="grid">
+                <div class="card" data-pdf="/pdf/Asian Paints Equity Report.pdf">
+                    <div class="card-background textile"
+                        style="background-image: url('/images/equity-report/asian-paints-equity.png');">
+                    </div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-initial">
+                            <div class="lottie-card" id="cardAnimation5"></div>
+                            <div class="card-year textile">Asian Paints Ltd.</div>
+                        </div>
+                        <div class="card-hover-content">
+                            <div class="report-title">Asian Paints Ltd. <br> FY[24-25] equity report</div>
+                            <button class="open-report-btn">Open Report</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-pdf="/pdf/Aditya Birla Fashion Equity Report.pdf">
+                    <div class="card-background"
+                        style="background-image: url('/images/equity-report/Aditya-Birla-Fashion-Equity.jpg');">
+                    </div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-initial">
+                            <div class="lottie-card" id="cardAnimation2"></div>
+                            <div class="card-year">Aditya Birla <br>Fashion & Retail</div>
+                        </div>
+                        <div class="card-hover-content">
+                            <div class="report-title">Aditya Birla Fashion & Retail <br> FY[25-26] Equity Report</div>
+                            <button class="open-report-btn">Open Report</button>
+                        </div>
+                    </div>
+                </div>
+        </main>
+        <%- include('partials/footer') %>
+
+
+</body>
+<script src="/javascript/industryreport.js"></script>
+
+</html>

@@ -153,6 +153,9 @@ app.get("/publications", (req, res) => res.render("Publications"));
 app.get("/publications/industryreports", (req, res) =>
   res.render("industryReports")
 );
+app.get("/publications/equityreports", (req, res) =>
+  res.render("equityReports")
+);
 
 app.get("/team", (req, res) => res.render("Team"));
 
