@@ -11,21 +11,6 @@
     <%- include('partials/head') %>
 
     <style>
-        /* ===== THIN NAVBAR FIX ===== */
-        .navbar {
-            position: fixed !important;
-            top: 0 !important;
-            width: 100% !important;
-            height: 60px !important;
-            background: rgba(0, 0, 0, 0.95) !important;
-            backdrop-filter: blur(15px) !important;
-            -webkit-backdrop-filter: blur(15px) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-            z-index: 1000 !important;
-            padding: 0 2rem !important;
-        }
-
-        /* Ensure body has proper padding for fixed navbar */
         body {
             font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             background: var(--bg);
@@ -33,7 +18,7 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
-            padding-top: 60px !important; /* Match navbar height */
+            padding-top: 0 !important;
         }
 
         /* ===== EVENTS STYLES ===== */
@@ -214,10 +199,6 @@
 
         /* ===== MEDIA QUERIES ===== */
         @media (max-width: 900px) {
-            .navbar {
-                padding: 0 1rem !important;
-            }
-
             .main-event {
                 flex-direction: column !important;
                 text-align: center;
@@ -230,17 +211,13 @@
             }
 
             body {
-                padding-top: 60px !important;
+                padding-top: 0 !important;
             }
         }
 
         @media (max-width: 600px) {
-            .navbar {
-                height: 50px !important;
-            }
-
             body {
-                padding-top: 50px !important;
+                padding-top: 0 !important;
             }
 
             .event-logo {
@@ -261,6 +238,19 @@
 
     <!-- EVENTS -->
     <section class="events">
+        <!-- Upcoming Event -->
+        <a id="vincenza-7-0" href="/events/Vincenza7_0" target="_blank" class="main-event reveal">
+            <div class="content">
+                <h2 class="title">VINCENZA 7.0</h2>
+                <p class="desc">Synergy’s annual flagship event is coming back with Vincenza 7.0. Stay tuned for the
+                    full schedule, registrations, and competition details.</p>
+                <span class="btn">Read more</span>
+            </div>
+            <div class="event-logo">
+                <img src="/images/Vincenza/Selected_Event_Vincenza.jpg" alt="VINCENZA 7.0 Event Cover">
+            </div>
+        </a>
+
         <!-- Event 1 -->
         <a href="/events/Vincenza6_0" target="_blank" class="main-event reveal">
             <div class="content">

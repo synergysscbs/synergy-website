@@ -139,6 +139,7 @@ app.get("/contact", (req, res) => {
 
 app.get("/events", (req, res) => res.render("events"));
 app.get("/events/Vincenza6_0", (req, res) => res.render("Vincenza6_0"));
+app.get("/events/Vincenza7_0", (req, res) => res.render("Vincenza7_0"));
 app.get("/events/CBS", (req, res) => res.render("CBS"));
 app.get("/events/catalyst", (req, res) => res.render("catalyst"));
 
