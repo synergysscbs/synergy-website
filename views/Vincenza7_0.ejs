@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNERGY-SSCBS | Vincenza 7.0</title>
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --brand: #44ccff;
+            --bg: #0A0A0A;
+            --panel: rgba(0, 0, 0, 0.35);
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.78);
+            --border: rgba(255, 255, 255, 0.14);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: radial-gradient(1200px 800px at 20% 10%, rgba(68, 204, 255, 0.18), transparent 55%),
+                linear-gradient(135deg, #060606 0%, #141414 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 64px 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('/images/Vincenza/vincenza.jpg') center/cover no-repeat;
+            filter: saturate(1.05) contrast(1.05) brightness(0.8);
+            transform: scale(1.06);
+            z-index: -2;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.75) 100%);
+            z-index: -1;
+        }
+
+        .hero-card {
+            text-align: center;
+            padding: clamp(18px, 3.5vw, 28px);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--panel);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid rgba(68, 204, 255, 0.35);
+            background: rgba(68, 204, 255, 0.14);
+            margin-bottom: 14px;
+        }
+
+        .hero-subtitle {
+            color: rgba(68, 204, 255, 0.95);
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .hero-title {
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            line-height: 1.05;
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            text-shadow: 0 0 26px rgba(68, 204, 255, 0.22);
+        }
+
+        .hero-description {
+            margin: 16px auto 0;
+            max-width: 70ch;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.7vw, 1.12rem);
+            line-height: 1.75;
+        }
+
+        .actions {
+            margin-top: 22px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+            user-select: none;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .btn-primary {
+            color: #00110a;
+            background: linear-gradient(90deg, rgba(68, 204, 255, 0.98) 0%, rgba(20, 255, 210, 0.86) 100%);
+            border-color: rgba(68, 204, 255, 0.55);
+            box-shadow: 0 14px 40px rgba(68, 204, 255, 0.18);
+        }
+
+        .btn-ghost {
+            color: var(--text);
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        .section {
+            padding: 54px 0;
+        }
+
+        .section h2 {
+            font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            margin-bottom: 14px;
+        }
+
+        .section p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .info-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .info {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .info .k {
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            color: rgba(68, 204, 255, 0.95);
+        }
+
+        .info .v {
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .feature-grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .feature-card {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .feature-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(68, 204, 255, 0.35);
+            background: rgba(68, 204, 255, 0.12);
+            color: rgba(68, 204, 255, 0.95);
+            flex: 0 0 auto;
+        }
+
+        .feature-title {
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-subtitle {
+            margin-top: 2px;
+            color: rgba(255, 255, 255, 0.74);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .quote {
+            margin-top: 16px;
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(68, 204, 255, 0.28);
+            background: rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .quote p {
+            color: rgba(255, 255, 255, 0.88);
+            font-weight: 700;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 820px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <section class="hero" aria-label="Vincenza 7.0 hero section">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-card">
+                <div class="badge"><i class="fa-solid fa-bolt"></i> Case Submission Round: Ongoing</div>
+                <p class="hero-subtitle">The Flagship Corporate Conclave of SSCBS</p>
+                <h1 class="hero-title">EY x Vincenza 7.0</h1>
+                <p class="hero-description">
+                    Synergy - The Corporate Society of SSCBS proudly presents EY x Vincenza 7.0, the annual flagship event of
+                    Shaheed Sukhdev College of Business Studies, University of Delhi, in association with Ernst & Young (EY),
+                    Powered By Unstop and supported by Associate Sponsors - RedBus, TIMES Institute, Mad Over Donuts and Gem Mines.
+                    Case Partner - Crowwd. Hosted on Unstop and also listed on StartupNews.fyi.
+                    This year, Vincenza 7.0 returns bigger and better than ever, with EY as the Title Partner. Winners will receive
+                    an exclusive Pre-Internship Interview Opportunity at EY and Crowwd, along with a Prize Pool of ₹1,00,000+ in Cash & Kind.
+                </p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="https://unstop.com/college-fests/vincenza-70-x-ey-shaheed-sukhdev-college-of-business-studies-university-of-delhi-440293" target="_blank" rel="noopener noreferrer">
+                        Unstop <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a class="btn btn-primary" href="https://startupnews.fyi/startup-events/vicenza-7-0-x-ey-new-delhi-19th-march-2026/" target="_blank" rel="noopener noreferrer">
+                        View on StartupNews <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a class="btn btn-ghost" href="/events#vincenza-7-0">
+                        Back to Events <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a class="btn btn-ghost" href="/contact">
+                        Contact Us <i class="fa-regular fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" aria-label="About Vincenza 7.0">
+        <div class="container">
+            <h2>Vincenza 7.0</h2>
+            <p>
+                Vincenza is not merely a competition - it is a simulated corporate battleground where strategy, precision, and
+                execution define distinction. Designed to mirror real-world boardroom dynamics, it challenges participants to think
+                critically, act decisively, and defend their ideas with conviction.
+            </p>
+
+            <div class="info-grid">
+                <div class="info">
+                    <div class="k">Status</div>
+                    <div class="v">Case Submission Round • Ongoing (submit via Unstop)</div>
+                </div>
+                <div class="info">
+                    <div class="k">Title Partner</div>
+                    <div class="v">Ernst & Young (EY)</div>
+                </div>
+                <div class="info">
+                    <div class="k">Case Partner</div>
+                    <div class="v">Crowwd</div>
+                </div>
+                <div class="info">
+                    <div class="k">Prize Pool</div>
+                    <div class="v">₹1,00,000+ (Cash & Kind)</div>
+                </div>
+                <div class="info">
+                    <div class="k">Opportunity</div>
+                    <div class="v">Pre-Internship Interview Opportunity at EY and Crowwd</div>
+                </div>
+                <div class="info">
+                    <div class="k">Powered By</div>
+                    <div class="v">Unstop</div>
+                </div>
+                <div class="info">
+                    <div class="k">Associate Sponsors</div>
+                    <div class="v">RedBus • TIMES Institute • Mad Over Donuts • Gem Mines</div>
+                </div>
+            </div>
+
+            <div class="quote" aria-label="Vincenza 7.0 statement">
+                <p>Participants begin as contenders. They leave as strategists.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" aria-label="Competitions at Vincenza 7.0">
+        <div class="container">
+            <h2>Competitions</h2>
+            <p>
+                From consulting frameworks and market expansion to product positioning and execution strategy, structured reasoning
+                is paramount at every stage.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-top">
+                        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-chess-knight"></i></div>
+                        <div>
+                            <div class="feature-title">Corporate Clash</div>
+                            <div class="feature-subtitle">The Consulting & Strategy Showdown</div>
+                        </div>
+                    </div>
+                    <p>
+                        Vincenza’s premier consulting and business strategy competition, designed to simulate real corporate
+                        problem-solving under constraints of time, uncertainty, and competitive pressure. Ideal for those passionate
+                        about consulting case studies, market entry strategy, guesstimates, product growth, and financial
+                        decision-making—delivered with boardroom-level confidence.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-top">
+                        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+                        <div>
+                            <div class="feature-title">Mark-O-Nova</div>
+                            <div class="feature-subtitle">The Marketing Warfare Arena</div>
+                        </div>
+                    </div>
+                    <p>
+                        Crafted for marketers who understand that positioning is power and storytelling is strategy. Participants are
+                        tested on building compelling brand strategies, crafting differentiated positioning, designing scalable
+                        go-to-market plans, and aligning creativity with commercial viability—where execution determines impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section" aria-label="Why Vincenza 7.0">
+        <div class="container">
+            <h2>Why Vincenza 7.0?</h2>
+            <p>
+                Vincenza stands at the intersection of ambition and ability. It offers participants a platform to apply classroom
+                knowledge in high-stakes corporate simulations while gaining exposure to real-world opportunities through a
+                Pre-Internship Interview with EY. It is more than a competition - it is a proving ground.
+            </p>
+
+            <div class="quote" aria-label="Vincenza 7.0 closing lines">
+                <p>
+                    At Vincenza 7.0, you begin unknown.<br>
+                    You compete with conviction.<br>
+                    You leave unforgettable.
+                </p>
+            </div>
+        </div>
+    </section> -->
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>
