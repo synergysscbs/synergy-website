@@ -18,6 +18,7 @@
             --text: #ffffff;
             --muted: rgba(255, 255, 255, 0.78);
             --border: rgba(255, 255, 255, 0.14);
+            --shadow: rgba(0, 0, 0, 0.55);
         }
 
         * {
@@ -33,6 +34,7 @@
             color: var(--text);
             overflow-x: hidden;
             min-height: 100vh;
+            padding-bottom: 120px; /* room for sticky CTA */
         }
 
         .container {
@@ -66,6 +68,133 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.75) 100%);
             z-index: -1;
+        }
+
+        /* Subtle hero motion (pure CSS). Remove if you want zero animation. */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(900px 500px at 20% 30%, rgba(68, 204, 255, 0.16), transparent 60%),
+                radial-gradient(700px 400px at 80% 20%, rgba(68, 204, 255, 0.10), transparent 60%);
+            opacity: 0.55;
+            z-index: -1;
+            animation: heroGlow 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% {
+                transform: translate3d(-1%, -1%, 0) scale(1.01);
+            }
+
+            100% {
+                transform: translate3d(1%, 1%, 0) scale(1.04);
+            }
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero-particles span {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(68, 204, 255, 0.22);
+            box-shadow: 0 0 18px rgba(68, 204, 255, 0.22);
+            animation: floatUp 12s linear infinite;
+            opacity: 0.75;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translate3d(0, 18vh, 0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate3d(0, -18vh, 0);
+                opacity: 0;
+            }
+        }
+
+        .hero-particles span:nth-child(1) {
+            left: 10%;
+            top: 68%;
+            animation-duration: 13s;
+            animation-delay: -2s;
+        }
+
+        .hero-particles span:nth-child(2) {
+            left: 22%;
+            top: 78%;
+            width: 6px;
+            height: 6px;
+            animation-duration: 11s;
+            animation-delay: -6s;
+        }
+
+        .hero-particles span:nth-child(3) {
+            left: 38%;
+            top: 72%;
+            width: 10px;
+            height: 10px;
+            animation-duration: 15s;
+            animation-delay: -9s;
+        }
+
+        .hero-particles span:nth-child(4) {
+            left: 52%;
+            top: 80%;
+            width: 5px;
+            height: 5px;
+            animation-duration: 10s;
+            animation-delay: -4s;
+        }
+
+        .hero-particles span:nth-child(5) {
+            left: 66%;
+            top: 70%;
+            width: 9px;
+            height: 9px;
+            animation-duration: 14s;
+            animation-delay: -7s;
+        }
+
+        .hero-particles span:nth-child(6) {
+            left: 78%;
+            top: 76%;
+            width: 6px;
+            height: 6px;
+            animation-duration: 12s;
+            animation-delay: -10s;
+        }
+
+        .hero-particles span:nth-child(7) {
+            left: 88%;
+            top: 74%;
+            width: 10px;
+            height: 10px;
+            animation-duration: 16s;
+            animation-delay: -5s;
+        }
+
+        .hero-particles span:nth-child(8) {
+            left: 45%;
+            top: 82%;
+            width: 7px;
+            height: 7px;
+            animation-duration: 13s;
+            animation-delay: -12s;
         }
 
         .hero-card {
@@ -164,6 +293,39 @@
             padding: 54px 0;
         }
 
+        .section-compact {
+            padding: 34px 0;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 22px 0 14px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .section-divider .line {
+            height: 1px;
+            flex: 1 1 auto;
+            background: linear-gradient(90deg, rgba(68, 204, 255, 0.0) 0%, rgba(68, 204, 255, 0.55) 35%, rgba(68, 204, 255, 0.0) 100%);
+        }
+
+        .section-divider .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(68, 204, 255, 0.28);
+            background: rgba(68, 204, 255, 0.10);
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            color: rgba(68, 204, 255, 0.95);
+        }
+
         .section h2 {
             font-size: clamp(1.6rem, 3.4vw, 2.3rem);
             font-weight: 900;
@@ -206,6 +368,305 @@
             color: rgba(255, 255, 255, 0.9);
             font-weight: 700;
             line-height: 1.4;
+        }
+
+        /* ===== Timeline strip (dummy dates) ===== */
+        .timeline {
+            margin-top: 16px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .t-step {
+            position: relative;
+            padding: 14px 14px 14px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .t-step.active {
+            border-color: rgba(68, 204, 255, 0.38);
+            box-shadow: 0 0 0 1px rgba(68, 204, 255, 0.18), 0 18px 45px rgba(68, 204, 255, 0.08);
+        }
+
+        .t-k {
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            color: rgba(68, 204, 255, 0.95);
+        }
+
+        .t-v {
+            margin-top: 10px;
+            font-weight: 900;
+            font-size: 1.05rem;
+            line-height: 1.25;
+        }
+
+        .t-sub {
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 700;
+            font-size: 0.92rem;
+            line-height: 1.4;
+        }
+
+        /* ===== Sponsor/partner row (dummy logos) ===== */
+        .sponsor-grid {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .sponsor {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .sponsor small {
+            display: block;
+            margin-top: 8px;
+            font-weight: 800;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(68, 204, 255, 0.9);
+        }
+
+        /* ===== Spotlight stats ===== */
+        .spotlight {
+            margin-top: 18px;
+            border: 1px solid rgba(68, 204, 255, 0.22);
+            border-radius: 22px;
+            background: radial-gradient(1200px 600px at 20% 0%, rgba(68, 204, 255, 0.12), transparent 55%),
+                rgba(0, 0, 0, 0.22);
+            padding: 18px;
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.30);
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .stat-card {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .stat-card .big {
+            font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+            font-weight: 900;
+            letter-spacing: 0.01em;
+        }
+
+        .stat-card .label {
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.74);
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        /* ===== Competition cards: tags + footer CTAs (dummy) ===== */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 0;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.86);
+            font-weight: 800;
+            font-size: 0.86rem;
+            line-height: 1;
+        }
+
+        .feature-footer {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .btn-small {
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 0.92rem;
+        }
+
+        .btn-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            filter: grayscale(0.2);
+        }
+
+        /* ===== FAQ (pure HTML) ===== */
+        .faq {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        details {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 16px;
+        }
+
+        summary {
+            cursor: pointer;
+            list-style: none;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details p {
+            margin-top: 12px;
+            color: rgba(255, 255, 255, 0.76);
+        }
+
+        /* ===== Gallery strip (dummy images) ===== */
+        .gallery {
+            margin-top: 16px;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(220px, 1fr);
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .g-card {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            scroll-snap-align: start;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .g-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.05) contrast(1.05);
+        }
+
+        .g-meta {
+            padding: 12px 12px 14px;
+        }
+
+        .g-meta .t {
+            font-weight: 900;
+            letter-spacing: 0.01em;
+        }
+
+        .g-meta .s {
+            margin-top: 6px;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 700;
+            font-size: 0.92rem;
+            line-height: 1.35;
+        }
+
+        /* ===== Sticky CTA bar ===== */
+        .sticky-cta {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 14px;
+            width: min(980px, 94vw);
+            z-index: 999;
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 18px;
+            border: 1px solid rgba(68, 204, 255, 0.22);
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 22px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .sticky-cta .left {
+            min-width: 0;
+        }
+
+        .sticky-cta .left .h {
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sticky-cta .left .p {
+            margin-top: 4px;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 700;
+            font-size: 0.92rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sticky-cta .right {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .sticky-cta .btn {
+            padding: 10px 12px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero::after,
+            .hero-particles span {
+                animation: none !important;
+            }
         }
 
         .feature-grid {
@@ -280,6 +741,26 @@
             .feature-grid {
                 grid-template-columns: 1fr;
             }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sponsor-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .faq {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-cta .left .p {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -289,6 +770,9 @@
 
     <section class="hero" aria-label="Vincenza 7.0 hero section">
         <div class="hero-bg"></div>
+        <div class="hero-particles" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
         <div class="container">
             <div class="hero-card">
                 <div class="badge"><i class="fa-solid fa-bolt"></i> Case Submission Round: Ongoing</div>
@@ -304,7 +788,7 @@
                 </p>
                 <div class="actions">
                     <a class="btn btn-primary" href="https://unstop.com/college-fests/vincenza-70-x-ey-shaheed-sukhdev-college-of-business-studies-university-of-delhi-440293" target="_blank" rel="noopener noreferrer">
-                        Unstop <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Register on Unstop <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                     <a class="btn btn-primary" href="https://startupnews.fyi/startup-events/vicenza-7-0-x-ey-new-delhi-19th-march-2026/" target="_blank" rel="noopener noreferrer">
                         View on StartupNews <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -316,6 +800,66 @@
                         Contact Us <i class="fa-regular fa-envelope"></i>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-compact" aria-label="Vincenza 7.0 timeline (dummy)">
+        <div class="container">
+            <div class="section-divider" aria-hidden="true">
+                <div class="line"></div>
+                <div class="chip"><i class="fa-solid fa-route"></i> Timeline</div>
+                <div class="line"></div>
+            </div>
+
+            <p style="margin-top: 6px;">
+                Dummy timeline (replace these dates/round names later).
+            </p>
+
+            <div class="timeline" role="list" aria-label="Competition timeline">
+                <div class="t-step active" role="listitem" aria-label="Current stage: Case submission">
+                    <div class="t-k">Now</div>
+                    <div class="t-v">Case Submission</div>
+                    <div class="t-sub">Ongoing on Unstop</div>
+                </div>
+                <div class="t-step" role="listitem">
+                    <div class="t-k">Next</div>
+                    <div class="t-v">Shortlist</div>
+                    <div class="t-sub">Dummy date • March 25, 2026</div>
+                </div>
+                <div class="t-step" role="listitem">
+                    <div class="t-k">Round 2</div>
+                    <div class="t-v">Live Case</div>
+                    <div class="t-sub">Dummy date • March 30, 2026</div>
+                </div>
+                <div class="t-step" role="listitem">
+                    <div class="t-k">Finals</div>
+                    <div class="t-v">Grand Finale</div>
+                    <div class="t-sub">Dummy date • April 2, 2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-compact" aria-label="Partners (dummy)">
+        <div class="container">
+            <div class="section-divider" aria-hidden="true">
+                <div class="line"></div>
+                <div class="chip"><i class="fa-solid fa-handshake"></i> Partners</div>
+                <div class="line"></div>
+            </div>
+
+            <p style="margin-top: 6px;">
+                Dummy logo cards (swap for real logos later).
+            </p>
+
+            <div class="sponsor-grid" role="list" aria-label="Partner logos">
+                <div class="sponsor" role="listitem">EY <small>Title Partner</small></div>
+                <div class="sponsor" role="listitem">Crowwd <small>Case Partner</small></div>
+                <div class="sponsor" role="listitem">Unstop <small>Powered By</small></div>
+                <div class="sponsor" role="listitem">RedBus <small>Associate</small></div>
+                <div class="sponsor" role="listitem">TIMES <small>Associate</small></div>
+                <div class="sponsor" role="listitem">MOD <small>Associate</small></div>
             </div>
         </div>
     </section>
@@ -363,6 +907,33 @@
             <div class="quote" aria-label="Vincenza 7.0 statement">
                 <p>Participants begin as contenders. They leave as strategists.</p>
             </div>
+
+            <div class="spotlight" aria-label="Prize and opportunity spotlight (dummy)">
+                <div class="section-divider" aria-hidden="true" style="margin-top: 6px;">
+                    <div class="line"></div>
+                    <div class="chip"><i class="fa-solid fa-star"></i> Spotlight</div>
+                    <div class="line"></div>
+                </div>
+
+                <p style="margin-top: 6px;">
+                    Dummy highlights (edit numbers/lines later).
+                </p>
+
+                <div class="spotlight-grid" role="list" aria-label="Highlights">
+                    <div class="stat-card" role="listitem">
+                        <div class="big">₹1,00,000+</div>
+                        <div class="label">Prize Pool (Cash & Kind)</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="big">PII</div>
+                        <div class="label">Pre-internship interview opportunity at EY and Crowwd</div>
+                    </div>
+                    <div class="stat-card" role="listitem">
+                        <div class="big">Nationwide</div>
+                        <div class="label">Top UG teams across India (dummy line)</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -389,6 +960,16 @@
                         about consulting case studies, market entry strategy, guesstimates, product growth, and financial
                         decision-making—delivered with boardroom-level confidence.
                     </p>
+                    <div class="tags" aria-label="Corporate Clash quick tags (dummy)">
+                        <span class="tag"><i class="fa-solid fa-users"></i> Team: 2–4</span>
+                        <span class="tag"><i class="fa-solid fa-file-lines"></i> Deliverable: PPT</span>
+                        <span class="tag"><i class="fa-solid fa-clock"></i> Time: 48h</span>
+                        <span class="tag"><i class="fa-solid fa-chart-line"></i> Focus: Strategy</span>
+                    </div>
+                    <div class="feature-footer" aria-label="Corporate Clash actions (dummy)">
+                        <a class="btn btn-ghost btn-small btn-disabled" href="#" tabindex="-1" aria-disabled="true">Rulebook (Soon)</a>
+                        <a class="btn btn-ghost btn-small btn-disabled" href="#" tabindex="-1" aria-disabled="true">Case Brief (Soon)</a>
+                    </div>
                 </div>
 
                 <div class="feature-card">
@@ -404,6 +985,16 @@
                         tested on building compelling brand strategies, crafting differentiated positioning, designing scalable
                         go-to-market plans, and aligning creativity with commercial viability—where execution determines impact.
                     </p>
+                    <div class="tags" aria-label="Mark-O-Nova quick tags (dummy)">
+                        <span class="tag"><i class="fa-solid fa-users"></i> Team: 2–4</span>
+                        <span class="tag"><i class="fa-solid fa-bullhorn"></i> Deliverable: Pitch</span>
+                        <span class="tag"><i class="fa-solid fa-pen-nib"></i> Focus: Positioning</span>
+                        <span class="tag"><i class="fa-solid fa-arrow-trend-up"></i> GTM Plan</span>
+                    </div>
+                    <div class="feature-footer" aria-label="Mark-O-Nova actions (dummy)">
+                        <a class="btn btn-ghost btn-small btn-disabled" href="#" tabindex="-1" aria-disabled="true">Rulebook (Soon)</a>
+                        <a class="btn btn-ghost btn-small btn-disabled" href="#" tabindex="-1" aria-disabled="true">Brand Brief (Soon)</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -427,6 +1018,95 @@
             </div>
         </div>
     </section> -->
+
+    <section class="section" aria-label="FAQ (dummy)">
+        <div class="container">
+            <div class="section-divider" aria-hidden="true">
+                <div class="line"></div>
+                <div class="chip"><i class="fa-regular fa-circle-question"></i> FAQ</div>
+                <div class="line"></div>
+            </div>
+
+            <p style="margin-top: 6px;">Dummy FAQs (replace with real rules/answers).</p>
+
+            <div class="faq" aria-label="Frequently asked questions">
+                <details>
+                    <summary>Who can participate?</summary>
+                    <p>Dummy answer: Undergraduate students from any college can participate.</p>
+                </details>
+                <details>
+                    <summary>What is the team size?</summary>
+                    <p>Dummy answer: Teams of 2–4 members.</p>
+                </details>
+                <details>
+                    <summary>How do we submit our case?</summary>
+                    <p>Dummy answer: Submit via Unstop using the official link above.</p>
+                </details>
+                <details>
+                    <summary>What are the deliverables?</summary>
+                    <p>Dummy answer: A deck + optional appendix depending on the round.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" aria-label="Highlights gallery (dummy images)">
+        <div class="container">
+            <div class="section-divider" aria-hidden="true">
+                <div class="line"></div>
+                <div class="chip"><i class="fa-regular fa-images"></i> Gallery</div>
+                <div class="line"></div>
+            </div>
+
+            <p style="margin-top: 6px;">Dummy images (swap with Vincenza 7.0 creatives later).</p>
+
+            <div class="gallery" aria-label="Gallery images">
+                <div class="g-card">
+                    <img src="/images/Vincenza/Selected_Event_Vincenza.jpg" alt="Vincenza highlight 1">
+                    <div class="g-meta">
+                        <div class="t">Flagship Energy</div>
+                        <div class="s">Dummy caption for the image.</div>
+                    </div>
+                </div>
+                <div class="g-card">
+                    <img src="/images/Vincenza/Corporate_Clash.png" alt="Corporate Clash highlight">
+                    <div class="g-meta">
+                        <div class="t">Corporate Clash</div>
+                        <div class="s">Dummy caption for the image.</div>
+                    </div>
+                </div>
+                <div class="g-card">
+                    <img src="/images/Vincenza/Mark-o-Nova.png" alt="Mark-O-Nova highlight">
+                    <div class="g-meta">
+                        <div class="t">Mark-O-Nova</div>
+                        <div class="s">Dummy caption for the image.</div>
+                    </div>
+                </div>
+                <div class="g-card">
+                    <img src="/images/Vincenza/Selected_Events.jpg" alt="Vincenza moments">
+                    <div class="g-meta">
+                        <div class="t">Moments</div>
+                        <div class="s">Dummy caption for the image.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sticky-cta" role="region" aria-label="Quick links">
+        <div class="left">
+            <div class="h">Vincenza 7.0 • Case Submission Ongoing</div>
+            <div class="p">Use the official links to register and view the listing.</div>
+        </div>
+        <div class="right">
+            <a class="btn btn-primary" href="https://unstop.com/college-fests/vincenza-70-x-ey-shaheed-sukhdev-college-of-business-studies-university-of-delhi-440293" target="_blank" rel="noopener noreferrer">
+                Unstop <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <a class="btn btn-ghost" href="https://startupnews.fyi/startup-events/vicenza-7-0-x-ey-new-delhi-19th-march-2026/" target="_blank" rel="noopener noreferrer">
+                StartupNews <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </div>
+    </div>
 
     <%- include('partials/footer') %>
 </body>
