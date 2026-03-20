@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNERGY-SSCBS | RAPIDO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%- include('partials/head') %>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #fbbf24;
+            --primary-light: #fcd34d;
+            --primary-dark: #b45309;
+            --accent: #fde68a;
+            --dark-bg: #0a0e15;
+            --card-bg: rgba(18, 24, 36, 0.85);
+            --text: #ffffff;
+            --text-light: #aeb9c4;
+            --text-lighter: #8a96a6;
+            --highlight: #fbbf24;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            --border: 1px solid rgba(251, 191, 36, 0.18);
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(251, 191, 36, 0.10) 0%, transparent 32%),
+                radial-gradient(circle at 88% 82%, rgba(245, 158, 11, 0.10) 0%, transparent 30%),
+                linear-gradient(135deg, #0a0e15 0%, #09101f 100%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        header {
+            padding: 50px 0 30px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
+            background: rgba(18, 24, 36, 0.8);
+            padding: 20px 40px;
+            border-radius: 50px;
+            backdrop-filter: blur(12px);
+            border: var(--border);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: rgb(255, 212, 0);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.25);
+        }
+
+        .logo-img img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 34px;
+            letter-spacing: 1px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text);
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.5px;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .project-subtitle {
+            font-size: clamp(1.35rem, 3.5vw, 1.7rem);
+            color: var(--text-light);
+            max-width: 900px;
+            margin: 40px auto 50px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .section-header.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.1rem, 5vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            max-width: 800px;
+            margin: 30px auto 0;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Gallery */
+        .gallery-section {
+            padding: 70px 0;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .gallery-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: zoom-in;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(10, 14, 21, 0.95), rgba(10, 14, 21, 0.15));
+            padding: 28px;
+            transform: translateY(25px);
+            opacity: 0.92;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.55rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .gallery-overlay p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* Cards */
+        section {
+            padding: 90px 0;
+            position: relative;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 60px 55px;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            backdrop-filter: blur(16px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.12), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            background: rgba(22, 30, 46, 0.9);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
+            background: rgba(251, 191, 36, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 35px;
+            border: 1px solid rgba(251, 191, 36, 0.20);
+        }
+
+        .card-icon i {
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.12rem;
+        }
+
+        .point-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .point-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 18px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .point-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(251, 191, 36, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .point-list li strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Highlight box + project container */
+        .student-project {
+            background: linear-gradient(135deg, rgba(18, 24, 36, 0.85), rgba(22, 30, 46, 0.85));
+            border-radius: 30px;
+            padding: 80px 70px;
+            margin: 90px 0;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition);
+        }
+
+        .student-project.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight-box {
+            background: rgba(251, 191, 36, 0.10);
+            border: 1px solid rgba(251, 191, 36, 0.22);
+            padding: 26px 26px;
+            border-radius: 18px;
+            margin: 30px 0 45px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .highlight-box.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-item {
+            background: rgba(18, 24, 36, 0.85);
+            border-radius: 20px;
+            padding: 60px 45px;
+            min-height: 240px;
+            text-align: center;
+            backdrop-filter: blur(16px);
+            border: var(--border);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-item.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-15px) scale(1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            background: rgba(22, 30, 46, 0.9);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.6rem, 5vw, 3rem);
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.05;
+            white-space: nowrap;
+            overflow-wrap: normal;
+            word-break: normal;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 200ms ease;
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-inner {
+            position: relative;
+            width: min(1200px, 92vw);
+            max-height: 88vh;
+        }
+
+        .lightbox-img {
+            width: 100%;
+            height: auto;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 18px;
+            box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.18), 0 28px 120px rgba(0, 0, 0, 0.70);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(0, 0, 0, 0.55);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 22px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.06);
+            border-color: rgba(251, 191, 36, 0.35);
+            background: rgba(0, 0, 0, 0.70);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 28px;
+            }
+
+            .student-project {
+                padding: 65px 45px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 18px;
+            }
+
+            .card {
+                padding: 42px 28px;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top-anchor"></div>
+
+    <%- include('partials/navbar') %>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-img">
+                    <img src="/images/project/rapido/rapido-logo.png" alt="Rapido logo">
+                </div>
+                <div class="logo-text">RAPIDO</div>
+            </div>
+            <h1 class="project-title">Three-Wheeler Expansion | Mumbai</h1>
+            <p class="project-subtitle">
+                A structured strategy engagement focused on onboarding infrastructure, market mapping intelligence, and
+                driver adoption for corridor-level scaling across Mumbai Metropolitan Region (MMR).
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="gallery-section">
+            <div class="section-header">
+                <h2>Snapshots</h2>
+                <p>Highlights from our Rapido engagement</p>
+            </div>
+
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="/images/project/rapido/PHOTO-2026-03-02-12-26-39.jpg" alt="Rapido engagement snapshot"
+                        class="gallery-img lightbox-trigger">
+                    <div class="gallery-overlay">
+                        <h3>Rapdido's Expansion Strategy</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="/images/project/rapido/WhatsApp Image 2026-03-02 at 12.26.40.jpeg"
+                        alt="Rapido engagement snapshot" class="gallery-img lightbox-trigger">
+                    <div class="gallery-overlay">
+                        <h3>Behavioural Analysis</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="/images/project/rapido/WhatsApp Image 2026-03-02 at 12.26.41.jpeg"
+                        alt="Rapido engagement snapshot" class="gallery-img lightbox-trigger">
+                    <div class="gallery-overlay">
+                        <h3>Retention & Switching</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Rapido</h2>
+                <p>One of India’s leading shared mobility platforms, pioneering affordable intra-city commuting</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Company Overview</h3>
+                    <p>
+                        Rapido is one of India’s leading shared mobility platforms, best known for pioneering the bike
+                        taxi segment. Founded in 2015, the company operates across 100+ cities, offering bike taxis, auto
+                        services, and last-mile connectivity solutions.
+                    </p>
+
+                    <ul class="point-list">
+                        <li><strong>Affordable &amp; time-efficient mobility</strong> in high-traffic environments</li>
+                        <li><strong>Driver-partner network at scale</strong> enabling flexible earning opportunities</li>
+                        <li><strong>Expanding offerings</strong> across India’s evolving mobility ecosystem</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Mission &amp; Industry</h3>
+                    <p>
+                        <strong>Mission:</strong> Making intra-city travel affordable, fast, and accessible by leveraging
+                        technology and a vast network of driver-partners, while creating flexible earning opportunities
+                        at scale.
+                    </p>
+
+                    <p style="margin-top: 18px; margin-bottom: 0;">
+                        <strong>Industry:</strong>
+                    </p>
+                    <ul class="point-list">
+                        <li>Shared Mobility</li>
+                        <li>Ride-Hailing</li>
+                        <li>Urban Transportation</li>
+                        <li>Gig Economy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 80px;">
+                <h2>Scale at a Glance</h2>
+                <p>Core platform metrics that reflect Rapido’s reach</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1" data-suffix="M+">0</div>
+                    <div class="stat-label">Captains</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="400" data-suffix="+">0</div>
+                    <div class="stat-label">Cities</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5" data-suffix="M+">0</div>
+                    <div class="stat-label">Rides Daily</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project">
+        <div class="container">
+            <div class="section-header">
+                <h2>Project Workstreams</h2>
+                <p>Three verticals executed to enable scalable expansion across MMR</p>
+            </div>
+
+            <div class="student-project">
+                <div class="card">
+                    <h3 style="color: var(--primary);">Consulting Engagement Summary</h3>
+
+                    <div class="highlight-box">
+                        <p>
+                            Outcome: Structured suburban penetration (Thane &amp; Navi Mumbai focus), reduced onboarding
+                            friction, and built a compliance-aligned activation engine benchmarked to <strong>5,040
+                                autos/hour</strong> demand capacity.
+                        </p>
+                    </div>
+
+                    <h3>Onboarding &amp; Infrastructure Strategy</h3>
+                    <ul class="point-list">
+                        <li><strong>Location Shortlisting</strong> using 6 structured filters (Physical Infrastructure,
+                            Regulatory Alignment, Demand Amenities, Environmental Risk, Land Availability, Union
+                            Strength)</li>
+                        <li><strong>Location Strategy Lead</strong>: Identified Belapur Sector 15 as Primary Hub; expanded
+                            to Vashi Sec-17, Kharghar Sec-20, Kopar Khairane</li>
+                        <li><strong>Demand Validation Model</strong>: Converted 4,17,000 daily footfall into 1,87,650 auto
+                            riders (45% share) and estimated 5,040 autos/hour required across peak &amp; non-peak splits
+                        </li>
+                        <li><strong>Peak Deployment Insight</strong>: Peak 1,560 sharing + 2,010 meter; Non-peak 370
+                            sharing + 1,100 meter</li>
+                        <li><strong>Hybrid 3:10:8 Framework</strong>: 3 Fixed Centres, 10 Mobile Units, 8 Third-Party
+                            Centres</li>
+                        <li><strong>Operational Flow</strong>: Assisted onboarding covering KYC, vehicle inspection, app
+                            installation, safety training &amp; activation</li>
+                    </ul>
+
+                    <h3>Market Mapping</h3>
+                    <ul class="point-list">
+                        <li><strong>Objective</strong>: Evaluate corridor-level viability across Mumbai, Navi Mumbai, and
+                            Thane; identify high-density clusters for supply activation</li>
+                        <li><strong>Approach</strong>: Mapped 5.8L+ registered autos; analyzed 4.8M+ daily auto trips;
+                            identified 113K+ unmet last-mile trips/day; consolidated 25+ public/government datasets</li>
+                        <li><strong>Key Insights</strong>: 76.8% of supply concentrated in Mumbai Suburban; 22.8 autos/km
+                            in high-density corridors; 70K+ scalable activation pool identified</li>
+                        <li><strong>Deliverables</strong>: Heatmaps, dashboards, micro-cluster mapping (500m–1km), phased
+                            expansion roadmap</li>
+                    </ul>
+
+                    <h3>Driver Behaviour &amp; Adoption Strategy</h3>
+                    <ul class="point-list">
+                        <li><strong>Segmentation</strong>: 2,200+ drivers segmented into Platform-Ready, Middle-Ground,
+                            Resistant cohorts</li>
+                        <li><strong>Diagnostics</strong>: Identified 5 adoption barriers; NPS-based scorecards across 5
+                            sub-regions, 15+ micro corridors</li>
+                        <li><strong>STP Analysis Lead</strong>: Segmented Mumbai’s 1.8L auto market for prioritized
+                            targeting</li>
+                        <li><strong>GTM Framework</strong>: 5-phase rollout targeting 20K drivers across Andheri-Kurla and
+                            BKC supply pockets</li>
+                        <li><strong>Economics &amp; Targeting</strong>: Earnings sensitivity model + propensity scoring for
+                            acquisition priorities; observed ₹400–₹600/day upside and 22% higher monthly income</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Project Outcomes</h2>
+                <p>Selected metrics and scale indicators from the engagement</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5040" data-suffix="">0</div>
+                    <div class="stat-label">Autos/Hour Capacity</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5.8" data-suffix="L+" data-decimals="1">0</div>
+                    <div class="stat-label">Autos Mapped (MMR)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4.8" data-suffix="M+" data-decimals="1">0</div>
+                    <div class="stat-label">Daily Auto Trips</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="113" data-suffix="K+">0</div>
+                    <div class="stat-label">Unmet Trips/Day</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="22.8" data-suffix="" data-decimals="1">0</div>
+                    <div class="stat-label">Autos per Km</div>
+                </div>
+            </div>
+
+            <div class="gallery-section" style="padding-top: 10px;">
+                <div class="section-header">
+                    <h2>More Snapshots</h2>
+                    <p>Additional meeting and slide captures from the project</p>
+                </div>
+
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <img src="/images/project/rapido/WhatsApp Image 2026-03-02 at 12.26.40 (1).jpeg"
+                            alt="Rapido snapshot" class="gallery-img lightbox-trigger">
+                        <div class="gallery-overlay">
+                            <h3>Earning & Incentives Analysis</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="/images/project/rapido/WhatsApp Image 2026-03-02 at 12.26.41 (1).jpeg"
+                            alt="Rapido snapshot" class="gallery-img lightbox-trigger">
+                        <div class="gallery-overlay">
+                            <h3>Challenges Faced by Captains</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="/images/project/rapido/WhatsApp Image 2026-03-02 at 12.26.41 (2).jpeg"
+                            alt="Rapido snapshot" class="gallery-img lightbox-trigger">
+                        <div class="gallery-overlay">
+                            <h3>Captain Profiling</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <div class="lightbox-inner">
+            <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close image">
+                &times;
+            </button>
+            <img id="lightbox-img" class="lightbox-img" alt="" />
+        </div>
+    </div>
+
+    <script src="/javascript/rapido.js"></script>
+</body>
+
+</html>

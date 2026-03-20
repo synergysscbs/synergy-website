@@ -146,6 +146,7 @@ app.get("/events/catalyst", (req, res) => res.render("catalyst"));
 app.get("/initiatives", (req, res) => res.render("Initiatives"));
 
 app.get("/project", (req, res) => res.render("Project"));
+app.get("/project/rapido", (req, res) => res.render("rapido"));
 app.get("/project/zypp", (req, res) => res.render("zypp"));
 app.get("/project/slp", (req, res) => res.render("slp"));
 app.get("/project/John-Jacobs", (req, res) => res.render("John-Jacobs"));
