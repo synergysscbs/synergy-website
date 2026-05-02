@@ -130,9 +130,9 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -322,7 +322,7 @@
 
             .grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 50px;
             }
 
             .card {
@@ -380,6 +380,23 @@
             <h2 class="section-title">Company-wise Financial Analysis</h2>
 
             <div class="grid">
+                <div class="card" data-pdf="/pdf/LODHA DEVELOPERS ERR.pdf">
+                    <div class="card-background textile"
+                        style="background-image: url('/images/equity-report/LODHA DEVELOPERS ERR.jpg');">
+                    </div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-initial">
+                            <div class="lottie-card" id="cardAnimation5"></div>
+                            <div class="card-year textile">Lodha Developers Ltd.</div>
+                        </div>
+                        <div class="card-hover-content">
+                            <div class="report-title">Lodha Developers Ltd. <br> FY[25-26] Equity Report</div>
+                            <button class="open-report-btn">Open Report</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card" data-pdf="/pdf/JK Cements Equity Research Report.pdf">
                     <div class="card-background"
                         style="background-image: url('/images/equity-report/JK Cements Equity Research Report_page.jpg');">
@@ -425,7 +442,7 @@
                             <div class="card-year textile">Asian Paints Ltd.</div>
                         </div>
                         <div class="card-hover-content">
-                            <div class="report-title">Asian Paints Ltd. <br> FY[24-25] equity report</div>
+                            <div class="report-title">Asian Paints Ltd. <br> FY[24-25] Equity Report</div>
                             <button class="open-report-btn">Open Report</button>
                         </div>
                     </div>
