@@ -27,6 +27,6 @@
     "nodemailer": "^7.0.9"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
